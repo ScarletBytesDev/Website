@@ -29,7 +29,7 @@ describe("SiteHeader", () => {
     const onToggleMotion = vi.fn();
     render(<SiteHeader motionEnabled={false} onToggleMotion={onToggleMotion} />);
 
-    const toggle = screen.getByRole("switch");
+    const toggle = screen.getAllByRole("switch")[0];
     expect(toggle.getAttribute("aria-checked")).toBe("false");
 
     fireEvent.click(toggle);
@@ -38,9 +38,12 @@ describe("SiteHeader", () => {
 
   it("opens the burger menu with links and the motion toggle", () => {
     render(<SiteHeader motionEnabled onToggleMotion={() => {}} />);
+    const menu = screen.getByTestId("mobile-menu");
+    expect(menu.classList.contains("site-header__menu--open")).toBe(false);
+
     fireEvent.click(screen.getByRole("button", { name: "Open menu" }));
 
-    const menu = screen.getByTestId("mobile-menu");
+    expect(menu.classList.contains("site-header__menu--open")).toBe(true);
     for (const item of navigation) {
       expect(menu.textContent).toContain(item.label);
     }
@@ -58,6 +61,6 @@ describe("SiteHeader", () => {
       fireEvent.click(link);
     }
 
-    expect(screen.queryByTestId("mobile-menu")).toBeNull();
+    expect(menu.classList.contains("site-header__menu--open")).toBe(false);
   });
 });

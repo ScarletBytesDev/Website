@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "../../assets/FoxxyLogoFull.png";
 import { navigation, type NavigationItem } from "../../assets/navigation.ts";
+import "./SiteHeader.css";
 
 export interface SiteHeaderProps {
   motionEnabled: boolean;
@@ -88,7 +89,7 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
     const { menuOpen } = this.state;
 
     return (
-      <header className="relative z-20 flex items-center gap-4 px-4 py-3 sm:px-6">
+      <header className="relative z-20 flex items-center gap-4 bg-ink-950/60 px-4 py-3 sm:px-6">
         <div className="flex flex-1 items-center">
           <button
             type="button"
@@ -123,27 +124,27 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
           <div className="hidden md:block">{this.renderMotionToggle()}</div>
         </div>
 
-        {menuOpen && (
-          <div
-            data-testid="mobile-menu"
-            className="absolute inset-x-0 top-full z-30 flex flex-col gap-1 border-b border-ink-800 bg-ink-950/95 p-4 md:hidden"
-          >
-            {navigation.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={this.handleCloseMenu}
-                className="flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium text-ink-200 transition-colors hover:bg-ink-900 hover:text-ink-100"
-              >
-                {this.renderNavLabel(item)}
-              </a>
-            ))}
+        <div
+          data-testid="mobile-menu"
+          className={`site-header__menu absolute inset-x-0 top-full z-30 flex flex-col gap-1 border-b border-ink-800 bg-ink-950/95 p-4 md:hidden ${
+            menuOpen ? "site-header__menu--open" : ""
+          }`}
+        >
+          {navigation.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              onClick={this.handleCloseMenu}
+              className="flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium text-ink-200 transition-colors hover:bg-ink-900 hover:text-ink-100"
+            >
+              {this.renderNavLabel(item)}
+            </a>
+          ))}
 
-            <div className="mt-2 border-t border-ink-800 pt-3">
-              {this.renderMotionToggle()}
-            </div>
+          <div className="mt-2 border-t border-ink-800 pt-3">
+            {this.renderMotionToggle()}
           </div>
-        )}
+        </div>
       </header>
     );
   }

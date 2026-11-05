@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Gamepad2 } from "lucide-react";
 import { socialLinks } from "./assets/sociallinks.ts";
 import { DitherGridBackground } from "./components/dither/DitherGridBackground.tsx";
+import { SiteFooter } from "./components/layout/SiteFooter.tsx";
 import { SiteHeader } from "./components/layout/SiteHeader.tsx";
 import { preferences } from "./services/Preferences.ts";
 
@@ -63,6 +64,8 @@ export default class App extends Component<object, AppState> {
               ))}
             </nav>
           </main>
+
+          <SiteFooter />
         </div>
       </DitherGridBackground>
     );
