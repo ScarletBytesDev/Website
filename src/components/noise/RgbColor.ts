@@ -10,10 +10,14 @@ export class RgbColor {
    * Parses any CSS color (named, hex, rgb()/rgba()) by letting the canvas
    * resolve it: assigning to fillStyle normalizes the value to a canonical
    * string which is then read back. Falls back to white on invalid input.
+   *
+   * A single var(--token, fallback) reference is resolved against the
+   * document root first, so theme variables can be used as color parameters.
    */
   static fromCss(ctx: CanvasRenderingContext2D, css: string): RgbColor {
+    const resolved = RgbColor.resolveVariable(css);
     ctx.fillStyle = "#000000";
-    ctx.fillStyle = css;
+    ctx.fillStyle = resolved;
     const normalized = ctx.fillStyle;
 
     if (normalized.startsWith("#")) {
@@ -42,5 +46,17 @@ export class RgbColor {
     }
 
     return new RgbColor(255, 255, 255);
+  }
+
+  private static resolveVariable(css: string): string {
+    const match = css.match(
+      /^\s*var\(\s*(--[\w-]+)\s*(?:,\s*([^()]+))?\s*\)\s*$/,
+    );
+    if (!match) return css;
+
+    const value = getComputedStyle(document.documentElement)
+      .getPropertyValue(match[1])
+      .trim();
+    return value || match[2]?.trim() || css;
   }
 }

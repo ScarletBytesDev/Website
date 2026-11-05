@@ -93,7 +93,7 @@ export class DitherGridBackground extends Component<
   private createNoiseImage(): string {
     return new DitherTile({
       cells: this.props.noiseTileCells ?? DitherTile.DEFAULT_CELLS,
-      color: this.props.noiseColor ?? "#a32338",
+      color: this.props.noiseColor ?? "var(--color-scarlet-600)",
       density: this.props.noiseDensity ?? 0.55,
       contrast: this.props.noiseContrast ?? 1.8,
       scale: this.props.noiseScale ?? 32,
@@ -111,13 +111,13 @@ export class DitherGridBackground extends Component<
 
   override render() {
     const {
-      backgroundColor = "#101a22",
+      backgroundColor = "var(--color-ink-950)",
 
-      gridColor = "#5b8293",
+      gridColor = "var(--color-steel-500)",
       gridSize = 41,
       gridOpacity = 0.23,
 
-      noiseColor = "#a32338",
+      noiseColor = "var(--color-scarlet-600)",
       noiseOpacity = 0.5,
       noiseSize = 3,
       noiseTileCells = DitherTile.DEFAULT_CELLS,
