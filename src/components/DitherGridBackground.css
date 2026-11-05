@@ -14,13 +14,9 @@
     inset: 0;
     z-index: 0;
     pointer-events: none;
+    overflow: hidden;
 
     opacity: var(--noise-opacity);
-
-    background-image: var(--noise-image);
-    background-size: var(--noise-tile-size) var(--noise-tile-size);
-    background-repeat: repeat;
-    image-rendering: pixelated;
 
     -webkit-mask-image: linear-gradient(
         to bottom,
@@ -39,26 +35,38 @@
     );
 }
 
-/* Animated texture movement */
-
-
 /*noinspection CssUnresolvedCustomProperty*/
-.dither-grid-background--animated,
-.dither-grid-background__noise {
-    animation: dither-noise-scroll var(--noise-speed) linear infinite;
+.dither-grid-background__noise-texture {
+    position: absolute;
+    inset: calc(-1 * var(--noise-overscan));
+
+    background-image: var(--noise-image);
+    background-size: var(--noise-tile-size) var(--noise-tile-size);
+    background-repeat: repeat;
+    image-rendering: pixelated;
 }
 
+/* Animated texture movement */
+
+/*noinspection CssUnresolvedCustomProperty*/
+.dither-grid-background--animated
+.dither-grid-background__noise-texture {
+    will-change: transform;
+    animation: dither-noise-scroll var(--noise-speed) linear infinite;
+}
 
 /*noinspection CssUnresolvedCustomProperty*/
 @keyframes dither-noise-scroll {
     from {
-        background-position: 0 0;
+        transform: translate3d(0, 0, 0);
     }
 
     to {
-        background-position:
-            var(--noise-x)
-            var(--noise-y);
+        transform: translate3d(
+            var(--noise-x),
+            var(--noise-y),
+            0
+        );
     }
 }
 
@@ -126,8 +134,8 @@
 /* Respect reduced motion preferences */
 
 @media (prefers-reduced-motion: reduce) {
-    .dither-grid-background--animated,
-    .dither-grid-background__noise,
+    .dither-grid-background--animated
+    .dither-grid-background__noise-texture,
     .dither-grid-background--glow::before {
         animation: none;
     }

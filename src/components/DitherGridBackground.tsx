@@ -122,6 +122,7 @@ export function DitherGridBackground({
   const angle = (noiseAngle * Math.PI) / 180;
   const travelX = Math.round(Math.cos(angle) * noiseTravel) * tileSize;
   const travelY = Math.round(Math.sin(angle) * noiseTravel) * tileSize;
+  const overscan = Math.max(Math.abs(travelX), Math.abs(travelY)) + tileSize;
 
   const variables: CSSVars = {
     "--background-color": backgroundColor,
@@ -137,6 +138,7 @@ export function DitherGridBackground({
     "--noise-speed": `${noiseSpeed}s`,
     "--noise-x": `${travelX}px`,
     "--noise-y": `${travelY}px`,
+    "--noise-overscan": `${overscan}px`,
 
     "--fade-start": `${fadeStart}%`,
     "--fade-end": `${fadeEnd}%`,
@@ -157,7 +159,9 @@ export function DitherGridBackground({
       style={variables}
       {...props}
     >
-      <div className="dither-grid-background__noise" aria-hidden="true" />
+      <div className="dither-grid-background__noise" aria-hidden="true">
+        <div className="dither-grid-background__noise-texture" />
+      </div>
 
       <div className="dither-grid-background__grid" aria-hidden="true" />
 
