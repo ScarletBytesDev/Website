@@ -1,0 +1,22 @@
+[
+  {
+    "label": "Home",
+    "href": "#home",
+    "icon": { "source": "lucide", "name": "House" }
+  },
+  {
+    "label": "Projects",
+    "href": "#projects",
+    "icon": { "source": "lucide", "name": "Rocket" }
+  },
+  {
+    "label": "Stream",
+    "href": "#stream",
+    "icon": { "source": "lucide", "name": "Tv" }
+  },
+  {
+    "label": "Community",
+    "href": "#community",
+    "icon": { "source": "lucide", "name": "Users" }
+  }
+]

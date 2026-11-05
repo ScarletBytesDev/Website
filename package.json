@@ -15,7 +15,8 @@
   "dependencies": {
     "lucide-react": "^1.69.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "simple-icons": "^16.36.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.6.5",

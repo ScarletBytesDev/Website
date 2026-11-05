@@ -1,0 +1,20 @@
+[
+  {
+    "platform": "twitch",
+    "label": "Twitch",
+    "href": "https://twitch.tv/",
+    "icon": { "source": "simple-icons", "name": "twitch" }
+  },
+  {
+    "platform": "youtube",
+    "label": "YouTube",
+    "href": "https://youtube.com/",
+    "icon": { "source": "simple-icons", "name": "youtube" }
+  },
+  {
+    "platform": "github",
+    "label": "GitHub",
+    "href": "https://github.com/",
+    "icon": { "source": "simple-icons", "name": "github" }
+  }
+]
