@@ -26,6 +26,8 @@ export interface DitherGridBackgroundProps
   noiseDetailScale?: number;
   noiseDetailOctaves?: number;
   noiseDetailStrength?: number;
+  noiseClampLow?: number;
+  noiseClampHigh?: number;
   noiseSeed?: number;
   noiseMaxFill?: number;
   noiseJitter?: number;
@@ -50,28 +52,30 @@ export function DitherGridBackground({
   gridOpacity = 0.23,
 
   noiseColor = "#a32338",
-  noiseOpacity = 0.85,
+  noiseOpacity = 0.5,
   noiseSize = 3,
   noiseTileCells = DITHER_TILE_CELLS,
   noiseDensity = 0.55,
   noiseContrast = 1.8,
-  noiseScale = 20,
+  noiseScale = 32,
   noiseOctaves = 3,
   noiseDetailScale = 5,
-  noiseDetailOctaves = 2,
-  noiseDetailStrength = 0.6,
-  noiseSeed = 7,
-  noiseMaxFill = 0.85,
-  noiseJitter = 0.2,
+  noiseDetailOctaves = 3,
+  noiseDetailStrength = 0.2,
+  noiseClampLow = 0,
+  noiseClampHigh = 0.9,
+  noiseSeed = 69,
+  noiseMaxFill = 0.6,
+  noiseJitter = 0.3,
   noiseSpeed = 180,
-  noiseAngle = 90,
+  noiseAngle = 100, // Yes this is slightly higher than 90
   noiseTravel = 1,
 
-  fadeStart = 35,
-  fadeEnd = 82,
+  fadeStart = 0,
+  fadeEnd = 90,
 
   animateNoise = true,
-  animateGlow = false,
+  animateGlow = true,
 
   children,
   className = "",
@@ -90,6 +94,8 @@ export function DitherGridBackground({
         detailScale: noiseDetailScale,
         detailOctaves: noiseDetailOctaves,
         detailStrength: noiseDetailStrength,
+        clampLow: noiseClampLow,
+        clampHigh: noiseClampHigh,
         seed: noiseSeed,
         maxFill: noiseMaxFill,
         jitter: noiseJitter,
@@ -104,6 +110,8 @@ export function DitherGridBackground({
       noiseDetailScale,
       noiseDetailOctaves,
       noiseDetailStrength,
+      noiseClampLow,
+      noiseClampHigh,
       noiseSeed,
       noiseMaxFill,
       noiseJitter,

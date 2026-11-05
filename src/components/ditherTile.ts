@@ -10,6 +10,8 @@ export type DitherTileOptions = {
   detailScale: number;
   detailOctaves: number;
   detailStrength: number;
+  clampLow: number;
+  clampHigh: number;
   seed: number;
   maxFill: number;
   jitter: number;
@@ -24,6 +26,11 @@ const BAYER_4X4 = [
 
 function clamp(value: number, min: number, max: number): number {
   return value < min ? min : value > max ? max : value;
+}
+
+function smoothstep(edge0: number, edge1: number, x: number): number {
+  const t = clamp((x - edge0) / (edge1 - edge0), 0, 1);
+  return t * t * (3 - 2 * t);
 }
 
 function lerp(a: number, b: number, t: number): number {
@@ -153,6 +160,8 @@ export function createDitherTile({
   detailScale,
   detailOctaves,
   detailStrength,
+  clampLow,
+  clampHigh,
   seed,
   maxFill,
   jitter,
@@ -173,7 +182,8 @@ export function createDitherTile({
     for (let x = 0; x < size; x++) {
       const island = fbm(x, y, cells, scale, octaves, seed);
       const detail = fbm(x, y, cells, detailScale, detailOctaves, seed + 31337);
-      const n = clamp(island + (detail - 0.5) * detailStrength, 0, 1);
+      const combined = clamp(island + (detail - 0.5) * detailStrength, 0, 1);
+      const n = smoothstep(clampLow, Math.max(clampHigh, clampLow + 0.001), combined);
       const p = clamp((n - 0.5) * contrast + density, 0, maxFill);
       const bayer = BAYER_4X4[y % 4][x % 4];
       const threshold =
