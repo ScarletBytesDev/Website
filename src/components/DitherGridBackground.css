@@ -1,0 +1,134 @@
+/*noinspection CssUnresolvedCustomProperty*/
+.dither-grid-background {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    min-height: 100%;
+    background: var(--background-color);
+}
+
+/*noinspection CssUnresolvedCustomProperty*/
+.dither-grid-background__noise {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    opacity: var(--noise-opacity);
+
+    background-image: var(--noise-image);
+    background-size: var(--noise-tile-size) var(--noise-tile-size);
+    background-repeat: repeat;
+    image-rendering: pixelated;
+
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black var(--fade-start),
+        rgba(0, 0, 0, 0.7) 55%,
+        transparent var(--fade-end)
+    );
+
+    mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black var(--fade-start),
+        rgba(0, 0, 0, 0.7) 55%,
+        transparent var(--fade-end)
+    );
+}
+
+/* Animated texture movement */
+
+
+/*noinspection CssUnresolvedCustomProperty*/
+.dither-grid-background--animated,
+.dither-grid-background__noise {
+    animation: dither-noise-scroll var(--noise-speed) linear infinite;
+}
+
+
+/*noinspection CssUnresolvedCustomProperty*/
+@keyframes dither-noise-scroll {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position:
+            var(--noise-x)
+            var(--noise-y);
+    }
+}
+
+/*noinspection CssUnresolvedCustomProperty*/
+.dither-grid-background__grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(
+            to right,
+            var(--grid-color) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to bottom,
+            var(--grid-color) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        var(--grid-size) var(--grid-size);
+
+    opacity: var(--grid-opacity);
+}
+
+/*noinspection CssUnresolvedCustomProperty*/
+.dither-grid-background--glow::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    z-index: 0;
+    pointer-events: none;
+
+    background: radial-gradient(
+        ellipse at 50% 0%,
+        var(--noise-color) 0%,
+        transparent 65%
+    );
+
+    opacity: 0.15;
+    animation: dither-glow 12s ease-in-out infinite alternate;
+}
+
+@keyframes dither-glow {
+    from {
+        opacity: 0.08;
+        transform: translateY(-2%);
+    }
+
+    to {
+        opacity: 0.22;
+        transform: translateY(2%);
+    }
+}
+
+.dither-grid-background__content {
+    position: relative;
+    z-index: 1;
+    min-height: inherit;
+}
+
+/* Respect reduced motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    .dither-grid-background--animated,
+    .dither-grid-background__noise,
+    .dither-grid-background--glow::before {
+        animation: none;
+    }
+}
