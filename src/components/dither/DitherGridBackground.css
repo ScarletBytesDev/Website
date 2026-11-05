@@ -1,3 +1,16 @@
+/*
+ * Layered background for .dither-grid-background:
+ *   __noise / __noise-texture  — dithered tile, fade-masked, transform-scrolled
+ *                                (the texture is oversized and clipped by the
+ *                                wrapper so the scroll never exposes edges)
+ *   __grid                     — static CSS grid lines
+ *   --glow::before             — optional ambient glow
+ *   __content                  — renders children above all layers
+ *
+ * Colors, sizes and animation timing come from CSS custom properties set by
+ * the React component, so they stay animatable at runtime.
+ */
+
 /*noinspection CssUnresolvedCustomProperty*/
 .dither-grid-background {
     position: relative;
@@ -54,6 +67,11 @@
     animation: dither-noise-scroll var(--noise-speed) linear infinite;
 }
 
+/*
+ * Scrolls by exactly one tile (or a whole-tile multiple) per loop — the
+ * travel distance is snapped to tile multiples in DitherGridBackground,
+ * so the jump back to the start is visually seamless.
+ */
 /*noinspection CssUnresolvedCustomProperty*/
 @keyframes dither-noise-scroll {
     from {
