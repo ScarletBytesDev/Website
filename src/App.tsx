@@ -1,6 +1,6 @@
 import { Gamepad2 } from "lucide-react";
 import { links } from "./assets/links.ts";
-import { DitherGridBackground } from "./components/DitherGridBackground.tsx";
+import { DitherGridBackground } from "./components/dither/DitherGridBackground.tsx";
 
 export default function App() {
   return (

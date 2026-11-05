@@ -49,8 +49,7 @@
 /* Animated texture movement */
 
 /*noinspection CssUnresolvedCustomProperty*/
-.dither-grid-background--animated
-.dither-grid-background__noise-texture {
+.dither-grid-background--animated .dither-grid-background__noise-texture {
     will-change: transform;
     animation: dither-noise-scroll var(--noise-speed) linear infinite;
 }
@@ -134,8 +133,7 @@
 /* Respect reduced motion preferences */
 
 @media (prefers-reduced-motion: reduce) {
-    .dither-grid-background--animated
-    .dither-grid-background__noise-texture,
+    .dither-grid-background--animated .dither-grid-background__noise-texture,
     .dither-grid-background--glow::before {
         animation: none;
     }
