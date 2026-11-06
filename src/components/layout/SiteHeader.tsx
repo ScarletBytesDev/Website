@@ -85,7 +85,7 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
                 <span className="text-sm font-medium text-ink-300">Motion</span>
                 <span
                     className={`relative inline-block h-6 w-11 rounded-full transition-colors ${
-                        motionEnabled ? "bg-amber-500" : "bg-ink-800"
+                        motionEnabled ? "bg-scarlet-600" : "bg-ink-800"
                     }`}
                 >
                     <span
