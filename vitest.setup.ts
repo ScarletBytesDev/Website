@@ -8,26 +8,26 @@ import { afterEach } from "vitest";
 const NOOP = () => {};
 
 function neutralizeIframeLoading(): void {
-  const proto = HTMLIFrameElement.prototype as unknown as Record<
-    symbol,
-    unknown
-  >;
-  const parent = Object.getPrototypeOf(proto) as Record<symbol, unknown>;
+    const proto = HTMLIFrameElement.prototype as unknown as Record<
+        symbol,
+        unknown
+    >;
+    const parent = Object.getPrototypeOf(proto) as Record<symbol, unknown>;
 
-  for (const sym of Object.getOwnPropertySymbols(proto)) {
-    const name = String(sym.description ?? "");
-    if (
-      name === "connectedToDocument" ||
-      name === "onSetAttribute" ||
-      name === "onRemoveAttribute"
-    ) {
-      proto[sym] = (parent[sym] as typeof NOOP) ?? NOOP;
+    for (const sym of Object.getOwnPropertySymbols(proto)) {
+        const name = String(sym.description ?? "");
+        if (
+            name === "connectedToDocument"
+            || name === "onSetAttribute"
+            || name === "onRemoveAttribute"
+        ) {
+            proto[sym] = (parent[sym] as typeof NOOP) ?? NOOP;
+        }
     }
-  }
 }
 
 neutralizeIframeLoading();
 
 afterEach(() => {
-  cleanup();
+    cleanup();
 });

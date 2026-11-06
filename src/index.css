@@ -11,25 +11,25 @@
  * to its source scanner).
  */
 @theme static {
-  /* Ink — cool dark neutrals: backgrounds, borders, text */
-  --color-ink-950: #101a22;
-  --color-ink-900: #18181b;
-  --color-ink-800: #27272a;
-  --color-ink-400: #a1a1aa;
-  --color-ink-300: #d4d4d8;
-  --color-ink-200: #e4e4e7;
-  --color-ink-100: #f4f4f5;
+    /* Ink — cool dark neutrals: backgrounds, borders, text */
+    --color-ink-950: #101a22;
+    --color-ink-900: #18181b;
+    --color-ink-800: #27272a;
+    --color-ink-400: #a1a1aa;
+    --color-ink-300: #d4d4d8;
+    --color-ink-200: #e4e4e7;
+    --color-ink-100: #f4f4f5;
 
-  /* Wine — warm dark maroon for the upper background gradient */
-  --color-wine-950: #2e1420;
+    /* Wine — warm dark maroon for the upper background gradient */
+    --color-wine-950: #2e1420;
 
-  /* Steel — structural blue-grey (grid lines) */
-  --color-steel-500: #5b8293;
+    /* Steel — structural blue-grey (grid lines) */
+    --color-steel-500: #5b8293;
 
-  /* Scarlet — brand red */
-  --color-scarlet-600: #a32338;
-  --color-scarlet-500: #e0233f;
+    /* Scarlet — brand red */
+    --color-scarlet-600: #a32338;
+    --color-scarlet-500: #e0233f;
 
-  /* Twitch purple */
-  --color-twitch-500: #9146ff;
+    /* Twitch purple */
+    --color-twitch-500: #9146ff;
 }

@@ -5,5 +5,5 @@ export type Route = "home" | "projects";
  * the home view; new pages just add a case here and a nav entry.
  */
 export function parseRoute(hash: string): Route {
-  return hash === "#projects" ? "projects" : "home";
+    return hash === "#projects" ? "projects" : "home";
 }

@@ -1,27 +1,27 @@
 name: CI
 
 on:
-  pull_request:
-  workflow_call:
-  workflow_dispatch:
+    pull_request:
+    workflow_call:
+    workflow_dispatch:
 
 jobs:
-  lint-test-build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
+    lint-test-build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v7
 
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 26
-          cache: npm
+            - uses: actions/setup-node@v7
+              with:
+                  node-version: 26
+                  cache: npm
 
-      - run: npm ci
-      - run: npm run lint
-      - run: npm test
-      - run: npm run build
+            - run: npm ci
+            - run: npm run lint
+            - run: npm test
+            - run: npm run build
 
-      - uses: actions/upload-pages-artifact@v5
-        if: github.event_name != 'pull_request'
-        with:
-          path: dist
+            - uses: actions/upload-pages-artifact@v5
+              if: github.event_name != 'pull_request'
+              with:
+                  path: dist

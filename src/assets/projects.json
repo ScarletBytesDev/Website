@@ -1,19 +1,19 @@
 [
-  {
-    "name": "This Website",
-    "description": "The site you are looking at — Vite, React and Tailwind with a hand-built animated dither background.",
-    "icon": { "source": "lucide", "name": "Code" },
-    "links": [
-      {
-        "label": "GitHub",
-        "href": "https://github.com/ScarletBytesDev/Website",
-        "icon": { "source": "simple-icons", "name": "github" }
-      }
-    ]
-  },
-  {
-    "name": "Dither Background",
-    "description": "A parameterized animated dither and grid background system, driven by CSS custom properties.",
-    "icon": { "source": "lucide", "name": "Sparkles" }
-  }
+    {
+        "name": "This Website",
+        "description": "The site you are looking at — Vite, React and Tailwind with a hand-built animated dither background.",
+        "icon": { "source": "lucide", "name": "Code" },
+        "links": [
+            {
+                "label": "GitHub",
+                "href": "https://github.com/ScarletBytesDev/Website",
+                "icon": { "source": "simple-icons", "name": "github" }
+            }
+        ]
+    },
+    {
+        "name": "Dither Background",
+        "description": "A parameterized animated dither and grid background system, driven by CSS custom properties.",
+        "icon": { "source": "lucide", "name": "Sparkles" }
+    }
 ]

@@ -6,84 +6,87 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const OUTPUT = join(ROOT, "src", "assets", "iconRegistry.generated.ts");
 
 const LUCIDE_ICONS_DIR = join(
-  ROOT,
-  "node_modules",
-  "lucide-react",
-  "dist",
-  "esm",
-  "icons",
+    ROOT,
+    "node_modules",
+    "lucide-react",
+    "dist",
+    "esm",
+    "icons",
 );
 const SIMPLE_ICONS_DIR = join(ROOT, "node_modules", "simple-icons", "icons");
 
 type IconRef = { source: string; name: string };
 
 function toKebab(name: string): string {
-  return name
-    .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
-    .replace(/([A-Za-z])(\d)/g, "$1-$2")
-    .toLowerCase();
+    return name
+        .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+        .replace(/([A-Za-z])(\d)/g, "$1-$2")
+        .toLowerCase();
 }
 
 function toPascal(name: string): string {
-  return toKebab(name)
-    .split("-")
-    .filter(Boolean)
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join("");
+    return toKebab(name)
+        .split("-")
+        .filter(Boolean)
+        .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+        .join("");
 }
 
 function collectJsonRefs(value: unknown, refs: IconRef[]): void {
-  if (Array.isArray(value)) {
-    for (const item of value) collectJsonRefs(item, refs);
-    return;
-  }
-  if (value && typeof value === "object") {
-    const record = value as Record<string, unknown>;
-    if (typeof record.source === "string" && typeof record.name === "string") {
-      refs.push({ source: record.source, name: record.name });
+    if (Array.isArray(value)) {
+        for (const item of value) collectJsonRefs(item, refs);
+        return;
     }
-    for (const item of Object.values(record)) collectJsonRefs(item, refs);
-  }
+    if (value && typeof value === "object") {
+        const record = value as Record<string, unknown>;
+        if (
+            typeof record.source === "string"
+            && typeof record.name === "string"
+        ) {
+            refs.push({ source: record.source, name: record.name });
+        }
+        for (const item of Object.values(record)) collectJsonRefs(item, refs);
+    }
 }
 
 function collectSourceFiles(dir: string, files: string[] = []): string[] {
-  for (const entry of readdirSync(dir, { withFileTypes: true })) {
-    const path = join(dir, entry.name);
-    if (entry.isDirectory()) {
-      collectSourceFiles(path, files);
-    } else if (
-      /\.tsx?$/.test(entry.name) &&
-      entry.name !== "iconRegistry.generated.ts"
-    ) {
-      files.push(path);
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+        const path = join(dir, entry.name);
+        if (entry.isDirectory()) {
+            collectSourceFiles(path, files);
+        } else if (
+            /\.tsx?$/.test(entry.name)
+            && entry.name !== "iconRegistry.generated.ts"
+        ) {
+            files.push(path);
+        }
     }
-  }
-  return files;
+    return files;
 }
 
 function collectRefs(): IconRef[] {
-  const refs: IconRef[] = [];
+    const refs: IconRef[] = [];
 
-  const assetsDir = join(ROOT, "src", "assets");
-  for (const entry of readdirSync(assetsDir)) {
-    if (entry.endsWith(".json")) {
-      collectJsonRefs(
-        JSON.parse(readFileSync(join(assetsDir, entry), "utf8")),
-        refs,
-      );
+    const assetsDir = join(ROOT, "src", "assets");
+    for (const entry of readdirSync(assetsDir)) {
+        if (entry.endsWith(".json")) {
+            collectJsonRefs(
+                JSON.parse(readFileSync(join(assetsDir, entry), "utf8")),
+                refs,
+            );
+        }
     }
-  }
 
-  const pattern =
-    /\{\s*source:\s*"(lucide|simple-icons|custom)"\s*,\s*name:\s*"([^"]+)"\s*}/g;
-  for (const file of collectSourceFiles(join(ROOT, "src"))) {
-    const code = readFileSync(file, "utf8");
-    for (const match of code.matchAll(pattern)) {
-      refs.push({ source: match[1], name: match[2] });
+    const pattern =
+        /\{\s*source:\s*"(lucide|simple-icons|custom)"\s*,\s*name:\s*"([^"]+)"\s*}/g;
+    for (const file of collectSourceFiles(join(ROOT, "src"))) {
+        const code = readFileSync(file, "utf8");
+        for (const match of code.matchAll(pattern)) {
+            refs.push({ source: match[1], name: match[2] });
+        }
     }
-  }
 
-  return refs;
+    return refs;
 }
 
 /**
@@ -92,61 +95,63 @@ function collectRefs(): IconRef[] {
  * up in the bundle, and no manual registration is needed.
  */
 export function generateIconRegistry(): void {
-  const entries = new Map<string, string>();
-  const lucideImports = new Map<string, string>();
-  const svgImports = new Map<string, string>();
+    const entries = new Map<string, string>();
+    const lucideImports = new Map<string, string>();
+    const svgImports = new Map<string, string>();
 
-  for (const ref of collectRefs()) {
-    const key = `${ref.source}:${ref.name}`;
+    for (const ref of collectRefs()) {
+        const key = `${ref.source}:${ref.name}`;
 
-    if (ref.source === "lucide") {
-      const file = `${toKebab(ref.name)}.mjs`;
-      if (!existsSync(join(LUCIDE_ICONS_DIR, file))) continue;
-      const identifier = toPascal(ref.name);
-      lucideImports.set(identifier, "lucide-react");
-      entries.set(key, identifier);
-    } else if (ref.source === "simple-icons") {
-      const file = `${toKebab(ref.name)}.svg`;
-      if (!existsSync(join(SIMPLE_ICONS_DIR, file))) continue;
-      const identifier = `svg_${toKebab(ref.name).replace(/\W/g, "_")}`;
-      svgImports.set(
-        identifier,
-        `../../node_modules/simple-icons/icons/${file}?raw`,
-      );
-      entries.set(key, identifier);
+        if (ref.source === "lucide") {
+            const file = `${toKebab(ref.name)}.mjs`;
+            if (!existsSync(join(LUCIDE_ICONS_DIR, file))) continue;
+            const identifier = toPascal(ref.name);
+            lucideImports.set(identifier, "lucide-react");
+            entries.set(key, identifier);
+        } else if (ref.source === "simple-icons") {
+            const file = `${toKebab(ref.name)}.svg`;
+            if (!existsSync(join(SIMPLE_ICONS_DIR, file))) continue;
+            const identifier = `svg_${toKebab(ref.name).replace(/\W/g, "_")}`;
+            svgImports.set(
+                identifier,
+                `../../node_modules/simple-icons/icons/${file}?raw`,
+            );
+            entries.set(key, identifier);
+        }
+        // "custom" references resolve at runtime and need no import.
     }
-    // "custom" references resolve at runtime and need no import.
-  }
 
-  const lines = [
-    "/* AUTO-GENERATED by scripts/generateIconRegistry.ts — do not edit. */",
-    "",
-  ];
+    const lines = [
+        "/* AUTO-GENERATED by scripts/generateIconRegistry.ts — do not edit. */",
+        "",
+    ];
 
-  if (lucideImports.size > 0) {
-    lines.push(
-      `import { ${[...lucideImports.keys()].sort().join(", ")} } from "lucide-react";`,
-    );
-  }
-  for (const identifier of [...svgImports.keys()].sort()) {
-    lines.push(`import ${identifier} from "${svgImports.get(identifier)}";`);
-  }
-  if (entries.size > 0) lines.push("");
+    if (lucideImports.size > 0) {
+        lines.push(
+            `import { ${[...lucideImports.keys()].sort().join(", ")} } from "lucide-react";`,
+        );
+    }
+    for (const identifier of [...svgImports.keys()].sort()) {
+        lines.push(
+            `import ${identifier} from "${svgImports.get(identifier)}";`,
+        );
+    }
+    if (entries.size > 0) lines.push("");
 
-  // noinspection JSUnresolvedReference
-  lines.push("export const GENERATED_ICONS: Record<string, unknown> = {");
-  for (const key of [...entries.keys()].sort()) {
-    lines.push(`  ${JSON.stringify(key)}: ${entries.get(key)},`);
-  }
-  lines.push("};", "");
+    // noinspection JSUnresolvedReference
+    lines.push("export const GENERATED_ICONS: Record<string, unknown> = {");
+    for (const key of [...entries.keys()].sort()) {
+        lines.push(`    ${JSON.stringify(key)}: ${entries.get(key)},`);
+    }
+    lines.push("};", "");
 
-  const content = lines.join("\n");
-  if (existsSync(OUTPUT) && readFileSync(OUTPUT, "utf8") === content) {
-    return;
-  }
-  writeFileSync(OUTPUT, content);
+    const content = lines.join("\n");
+    if (existsSync(OUTPUT) && readFileSync(OUTPUT, "utf8") === content) {
+        return;
+    }
+    writeFileSync(OUTPUT, content);
 }
 
 if (process.argv[1]?.endsWith("generateIconRegistry.ts")) {
-  generateIconRegistry();
+    generateIconRegistry();
 }
