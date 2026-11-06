@@ -4,6 +4,8 @@ import { isExternalHref, navigation } from "./navigation.ts";
 describe("isExternalHref", () => {
     it("detects links to other websites", () => {
         expect(isExternalHref("https://example.com")).toBe(true);
+        
+        // noinspection HttpUrlsUsage
         expect(isExternalHref("http://example.com")).toBe(true);
     });
 
