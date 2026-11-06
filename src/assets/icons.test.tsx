@@ -25,7 +25,9 @@ describe("icons", () => {
   });
 
   it("throws for unknown names", () => {
-    expect(() => resolveIcon({ source: "lucide", name: "NotAnIcon" })).toThrow();
+    expect(() =>
+      resolveIcon({ source: "lucide", name: "NotAnIcon" }),
+    ).toThrow();
     expect(() =>
       resolveIcon({ source: "simple-icons", name: "not-a-mark" }),
     ).toThrow();

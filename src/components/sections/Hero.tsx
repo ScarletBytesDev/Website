@@ -1,5 +1,5 @@
-import { Component } from "react";
 import { ArrowRight, Code } from "lucide-react";
+import { Component } from "react";
 import logo from "../../assets/FoxxyLogoFull.png";
 import { site } from "../../assets/site.ts";
 import { TwitchIcon } from "../icons/BrandIcons.tsx";

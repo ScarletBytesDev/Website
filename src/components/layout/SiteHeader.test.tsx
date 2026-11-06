@@ -34,7 +34,9 @@ describe("SiteHeader", () => {
 
   it("reflects the motion state on the switch and reports toggles", () => {
     const onToggleMotion = vi.fn();
-    render(<SiteHeader motionEnabled={false} onToggleMotion={onToggleMotion} />);
+    render(
+      <SiteHeader motionEnabled={false} onToggleMotion={onToggleMotion} />,
+    );
 
     const toggle = screen.getAllByRole("switch")[0];
     expect(toggle.getAttribute("aria-checked")).toBe("false");

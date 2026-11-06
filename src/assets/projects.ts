@@ -1,7 +1,4 @@
-import {
-  resolveOptionalIcon,
-  type IconComponent,
-} from "./icons.ts";
+import { type IconComponent, resolveOptionalIcon } from "./icons.ts";
 import projectsJson from "./projects.json";
 
 export type ProjectLink = {

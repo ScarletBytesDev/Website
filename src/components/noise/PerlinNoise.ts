@@ -45,10 +45,11 @@ export class PerlinNoise {
 
   private gradientDot(ix: number, iy: number, dx: number, dy: number): number {
     const gradients = PerlinNoise.GRADIENTS;
-    const g = gradients[
-      Math.floor(MathUtils.hash2(ix, iy, this.seed) * gradients.length) %
-        gradients.length
-    ];
+    const g =
+      gradients[
+        Math.floor(MathUtils.hash2(ix, iy, this.seed) * gradients.length) %
+          gradients.length
+      ];
     return g[0] * dx + g[1] * dy;
   }
 }

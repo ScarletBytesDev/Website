@@ -1,7 +1,7 @@
-import { Component } from "react";
 import { Menu, X } from "lucide-react";
+import { Component } from "react";
 import logo from "../../assets/FoxxyLogoFull.png";
-import { navigation, type NavigationItem } from "../../assets/navigation.ts";
+import { type NavigationItem, navigation } from "../../assets/navigation.ts";
 import "./SiteHeader.css";
 
 export interface SiteHeaderProps {

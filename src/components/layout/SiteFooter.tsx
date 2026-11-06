@@ -1,5 +1,5 @@
-import { Component } from "react";
 import { Heart } from "lucide-react";
+import { Component } from "react";
 
 /**
  * Footer banner matching the header's translucent ink. A scarlet line runs

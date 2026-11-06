@@ -1,5 +1,5 @@
-import { Component } from "react";
 import type { CSSProperties, HTMLAttributes, ReactNode } from "react";
+import { Component } from "react";
 import { DitherTile } from "../noise/DitherTile.ts";
 import "./DitherGridBackground.css";
 

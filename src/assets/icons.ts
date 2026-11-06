@@ -1,5 +1,5 @@
-import { createElement } from "react";
 import type { ComponentType } from "react";
+import { createElement } from "react";
 import { GENERATED_ICONS } from "./iconRegistry.generated.ts";
 
 export type IconProps = { className?: string; strokeWidth?: number };

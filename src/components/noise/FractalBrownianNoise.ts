@@ -26,7 +26,11 @@ export class FractalBrownianNoise {
     for (let o = 0; o < octaves; o++) {
       const period = Math.max(1, Math.round(cells / (scale * 2 ** o)));
       this.octaves.push(
-        new Octave(new PerlinNoise(period, seed + o * 1013), period / cells, amplitude),
+        new Octave(
+          new PerlinNoise(period, seed + o * 1013),
+          period / cells,
+          amplitude,
+        ),
       );
       total += amplitude;
       amplitude *= 0.5;

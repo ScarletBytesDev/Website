@@ -1,9 +1,9 @@
-import { Component } from "react";
 import { ArrowRight } from "lucide-react";
+import { Component } from "react";
 import {
-  navigation,
   type NavigationAccent,
   type NavigationItem,
+  navigation,
 } from "../../assets/navigation.ts";
 
 const ACCENT_STYLES: Record<

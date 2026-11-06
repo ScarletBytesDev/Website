@@ -13,9 +13,7 @@ describe("Hero", () => {
 
   it("renders the calls to action", () => {
     render(<Hero />);
-    expect(
-      screen.getByRole("link", { name: /watch on twitch/i }),
-    ).toBeTruthy();
+    expect(screen.getByRole("link", { name: /watch on twitch/i })).toBeTruthy();
     expect(
       screen.getByRole("link", { name: /explore projects/i }),
     ).toBeTruthy();

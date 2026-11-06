@@ -39,9 +39,7 @@ describe("Preferences", () => {
   });
 
   it("ignores stored values of the wrong type", () => {
-    const preferences = new Preferences(
-      fakeStorage('{"motionEnabled":"yes"}'),
-    );
+    const preferences = new Preferences(fakeStorage('{"motionEnabled":"yes"}'));
     expect(preferences.get("motionEnabled")).toBe(true);
   });
 

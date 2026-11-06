@@ -1,7 +1,7 @@
 import {
+  type IconComponent,
   parseIconReference,
   resolveIcon,
-  type IconComponent,
 } from "./icons.ts";
 import socialLinksJson from "./sociallinks.json";
 
@@ -41,6 +41,5 @@ function parseEntry(raw: unknown): SocialLink {
  * each declares its icon ("lucide", "simple-icons" or "custom", see icons.ts)
  * and this wrapper validates the data and resolves the icon component.
  */
-export const socialLinks: readonly SocialLink[] = socialLinksJson.map(
-  parseEntry,
-);
+export const socialLinks: readonly SocialLink[] =
+  socialLinksJson.map(parseEntry);

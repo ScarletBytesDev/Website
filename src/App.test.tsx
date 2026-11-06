@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it } from "vitest";
-import { preferences } from "./services/Preferences.ts";
 import App from "./App.tsx";
+import { preferences } from "./services/Preferences.ts";
 
 function firstSwitch(): HTMLElement {
   return screen.getAllByRole("switch")[0];

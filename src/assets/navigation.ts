@@ -1,7 +1,4 @@
-import {
-  resolveOptionalIcon,
-  type IconComponent,
-} from "./icons.ts";
+import { type IconComponent, resolveOptionalIcon } from "./icons.ts";
 import navigationJson from "./navigation.json";
 
 export type NavigationAccent = "scarlet" | "purple";
@@ -22,7 +19,11 @@ function parseEntry(raw: unknown): NavigationItem {
   if (typeof item.label !== "string" || typeof item.href !== "string") {
     throw new Error("Navigation entry needs string label and href");
   }
-  if (item.accent !== undefined && item.accent !== "scarlet" && item.accent !== "purple") {
+  if (
+    item.accent !== undefined &&
+    item.accent !== "scarlet" &&
+    item.accent !== "purple"
+  ) {
     throw new Error(`Unknown navigation accent "${String(item.accent)}"`);
   }
   if (item.description !== undefined && typeof item.description !== "string") {

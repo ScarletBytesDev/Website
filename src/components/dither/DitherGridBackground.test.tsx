@@ -17,7 +17,9 @@ describe("DitherGridBackground", () => {
     const root = container.querySelector(".dither-grid-background");
     expect(root).not.toBeNull();
     expect(root?.classList.contains("custom")).toBe(true);
-    expect(root?.classList.contains("dither-grid-background--animated")).toBe(true);
+    expect(root?.classList.contains("dither-grid-background--animated")).toBe(
+      true,
+    );
     expect(root?.classList.contains("dither-grid-background--glow")).toBe(true);
   });
 
@@ -26,8 +28,12 @@ describe("DitherGridBackground", () => {
       <DitherGridBackground animateNoise={false} animateGlow={false} />,
     );
     const root = container.querySelector(".dither-grid-background");
-    expect(root?.classList.contains("dither-grid-background--animated")).toBe(false);
-    expect(root?.classList.contains("dither-grid-background--glow")).toBe(false);
+    expect(root?.classList.contains("dither-grid-background--animated")).toBe(
+      false,
+    );
+    expect(root?.classList.contains("dither-grid-background--glow")).toBe(
+      false,
+    );
   });
 
   it("hides the decorative layers from assistive technology", () => {
@@ -45,7 +51,9 @@ describe("DitherGridBackground", () => {
     const { container } = render(
       <DitherGridBackground gridSize={64} noiseOpacity={0.25} />,
     );
-    const root = container.querySelector<HTMLElement>(".dither-grid-background");
+    const root = container.querySelector<HTMLElement>(
+      ".dither-grid-background",
+    );
     expect(root?.style.getPropertyValue("--grid-size")).toBe("64px");
     expect(root?.style.getPropertyValue("--noise-opacity")).toBe("0.25");
   });

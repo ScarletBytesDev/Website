@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { projects, type Project } from "../assets/projects.ts";
+import { type Project, projects } from "../assets/projects.ts";
 
 /** Projects view: a card list driven by src/assets/projects.json. */
 export class ProjectsPage extends Component {
