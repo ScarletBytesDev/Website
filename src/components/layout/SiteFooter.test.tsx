@@ -5,7 +5,7 @@ import { SiteFooter } from "./SiteFooter.tsx";
 describe("SiteFooter", () => {
   it("renders the tagline with a heart icon", async () => {
     const { container } = render(<SiteFooter />);
-    expect(screen.getByText("Good code. Good Vibes")).toBeTruthy();
+    expect(screen.getByText("Good code. good vibes.")).toBeTruthy();
     await waitFor(() => expect(container.querySelector("svg")).not.toBeNull());
   });
 

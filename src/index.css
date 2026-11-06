@@ -20,10 +20,16 @@
   --color-ink-200: #e4e4e7;
   --color-ink-100: #f4f4f5;
 
+  /* Wine — warm dark maroon for the upper background gradient */
+  --color-wine-950: #2e1420;
+
   /* Steel — structural blue-grey (grid lines) */
   --color-steel-500: #5b8293;
 
   /* Scarlet — brand red */
   --color-scarlet-600: #a32338;
   --color-scarlet-500: #e0233f;
+
+  /* Twitch purple */
+  --color-twitch-500: #9146ff;
 }

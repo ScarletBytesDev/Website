@@ -1,12 +1,17 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { navigation } from "../../assets/navigation.ts";
 import { SiteHeader } from "./SiteHeader.tsx";
 
 describe("SiteHeader", () => {
-  it("renders the logo and wordmark for desktop and mobile", () => {
+  beforeEach(() => {
+    window.location.hash = "";
+  });
+
+  it("renders the logo and split wordmark for desktop and mobile", () => {
     render(<SiteHeader motionEnabled onToggleMotion={() => {}} />);
-    expect(screen.getAllByText("ScarletBytes")).toHaveLength(2);
+    expect(screen.getAllByText("Scarlet")).toHaveLength(2);
+    expect(screen.getAllByText("Bytes")).toHaveLength(2);
     expect(screen.getAllByAltText("ScarletBytes fox logo")).toHaveLength(2);
   });
 

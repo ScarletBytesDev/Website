@@ -7,16 +7,20 @@
   {
     "label": "Projects",
     "href": "#projects",
-    "icon": { "source": "lucide", "name": "Rocket" }
+    "description": "Open source & creative tools",
+    "icon": { "source": "lucide", "name": "Code" }
   },
   {
     "label": "Stream",
     "href": "#stream",
-    "icon": { "source": "lucide", "name": "Tv" }
+    "description": "Coding, gaming and more",
+    "accent": "purple",
+    "icon": { "source": "lucide", "name": "TvMinimalPlay" }
   },
   {
     "label": "Community",
     "href": "#community",
+    "description": "Join the duckies!",
     "icon": { "source": "lucide", "name": "Users" }
   }
 ]

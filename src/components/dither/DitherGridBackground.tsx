@@ -111,7 +111,7 @@ export class DitherGridBackground extends Component<
 
   override render() {
     const {
-      backgroundColor = "var(--color-ink-950)",
+      backgroundColor = "linear-gradient(to bottom, var(--color-wine-950) 0%, var(--color-ink-950) 65%)",
 
       gridColor = "var(--color-steel-500)",
       gridSize = 41,

@@ -11,19 +11,32 @@ export interface SiteHeaderProps {
 
 interface SiteHeaderState {
   menuOpen: boolean;
+  hash: string;
 }
 
 /**
- * Site header: brand on the left, section links centered, motion toggle on
- * the right. On mobile the brand centers and everything else moves into a
- * burger menu. The links come from src/assets/navigation.json so new
- * sections can be added without touching this component.
+ * Site header: brand on the left, section links centered and the motion
+ * toggle on the right. The current section (by URL hash) is highlighted. On
+ * mobile the brand centers and everything else moves into a burger menu.
+ * Links come from src/assets/navigation.json.
  */
 export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
   constructor(props: SiteHeaderProps) {
     super(props);
-    this.state = { menuOpen: false };
+    this.state = { menuOpen: false, hash: window.location.hash };
   }
+
+  override componentDidMount(): void {
+    window.addEventListener("hashchange", this.handleHashChange);
+  }
+
+  override componentWillUnmount(): void {
+    window.removeEventListener("hashchange", this.handleHashChange);
+  }
+
+  private handleHashChange = () => {
+    this.setState({ hash: window.location.hash });
+  };
 
   private handleToggleMenu = () => {
     this.setState((prev) => ({ menuOpen: !prev.menuOpen }));
@@ -33,26 +46,22 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
     this.setState({ menuOpen: false });
   };
 
-  private renderNavLabel(item: NavigationItem) {
-    const Icon = item.icon;
-    return (
-      <>
-        {Icon && <Icon className="size-4" />}
-        {item.label}
-      </>
-    );
+  private isActive(item: NavigationItem): boolean {
+    const hash = this.state.hash || "#home";
+    return item.href === hash;
   }
 
   private renderBrand(className: string) {
     return (
-      <a href="/" className={className}>
+      <a href="#home" className={className}>
         <img
           src={logo}
           alt="ScarletBytes fox logo"
-          className="h-8 w-auto md:h-9"
+          className="h-9 w-auto md:h-10"
         />
-        <span className="text-lg font-bold text-ink-100 sm:text-xl">
-          ScarletBytes
+        <span className="text-xl font-bold">
+          <span className="text-scarlet-500">Scarlet</span>
+          <span className="text-ink-100">Bytes</span>
         </span>
       </a>
     );
@@ -75,11 +84,11 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
             motionEnabled ? "bg-scarlet-500" : "bg-ink-800"
           }`}
         >
-        <span
-          className={`absolute left-0.5 top-0.5 size-5 rounded-full bg-white transition-transform ${
-            motionEnabled ? "translate-x-5" : "translate-x-0"
-          }`}
-        />
+          <span
+            className={`absolute left-0.5 top-0.5 size-5 rounded-full bg-white transition-transform ${
+              motionEnabled ? "translate-x-5" : "translate-x-0"
+            }`}
+          />
         </span>
       </button>
     );
@@ -106,22 +115,32 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
 
         <div className="flex flex-1 items-center justify-center">
           <nav className="hidden items-center gap-2 md:flex">
-            {navigation.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-ink-300 transition-colors hover:bg-ink-900 hover:text-ink-100"
-              >
-                {this.renderNavLabel(item)}
-              </a>
-            ))}
+            {navigation.map((item) => {
+              const Icon = item.icon;
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className={`flex items-center gap-2 border-b-2 px-4 py-2 text-sm font-medium transition-colors ${
+                    this.isActive(item)
+                      ? "border-scarlet-500 text-scarlet-500"
+                      : "border-transparent text-ink-300 hover:text-ink-100"
+                  }`}
+                >
+                  {Icon && <Icon className="size-4" />}
+                  {item.label}
+                </a>
+              );
+            })}
           </nav>
 
           {this.renderBrand("flex items-center gap-2.5 md:hidden")}
         </div>
 
-        <div className="flex flex-1 items-center justify-end">
-          <div className="hidden md:block">{this.renderMotionToggle()}</div>
+        <div className="flex flex-1 items-center justify-end gap-4">
+          <div className="hidden items-center gap-4 md:flex">
+            {this.renderMotionToggle()}
+          </div>
         </div>
 
         <div
@@ -135,9 +154,14 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
               key={item.label}
               href={item.href}
               onClick={this.handleCloseMenu}
-              className="flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium text-ink-200 transition-colors hover:bg-ink-900 hover:text-ink-100"
+              className={`flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium transition-colors hover:bg-ink-900 ${
+                this.isActive(item)
+                  ? "text-scarlet-500"
+                  : "text-ink-200 hover:text-ink-100"
+              }`}
             >
-              {this.renderNavLabel(item)}
+              {item.icon && <item.icon className="size-4" />}
+              {item.label}
             </a>
           ))}
 
