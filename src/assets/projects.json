@@ -2,7 +2,14 @@
   {
     "name": "This Website",
     "description": "The site you are looking at — Vite, React and Tailwind with a hand-built animated dither background.",
-    "icon": { "source": "lucide", "name": "Code" }
+    "icon": { "source": "lucide", "name": "Code" },
+    "links": [
+      {
+        "label": "GitHub",
+        "href": "https://github.com/ScarletBytesDev/Website",
+        "icon": { "source": "simple-icons", "name": "github" }
+      }
+    ]
   },
   {
     "name": "Dither Background",

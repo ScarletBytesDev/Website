@@ -1,14 +1,16 @@
 import { Component } from "react";
-import { ArrowRight } from "lucide-react";
 import { projects, type Project } from "../assets/projects.ts";
 
-/** Projects view: a card grid driven by src/assets/projects.json. */
+/** Projects view: a card list driven by src/assets/projects.json. */
 export class ProjectsPage extends Component {
   private renderCard(project: Project) {
     const Icon = project.icon;
 
-    const body = (
-      <>
+    return (
+      <div
+        key={project.name}
+        className="flex items-center gap-5 rounded-2xl border-2 border-scarlet-500/50 bg-ink-950/40 p-6 transition-colors hover:border-scarlet-500"
+      >
         {Icon && (
           <span className="flex size-14 shrink-0 items-center justify-center rounded-xl bg-scarlet-500/10">
             <Icon className="size-8 text-scarlet-500" />
@@ -24,22 +26,25 @@ export class ProjectsPage extends Component {
           </span>
         </span>
 
-        {project.url && (
-          <ArrowRight className="size-5 shrink-0 text-scarlet-500 transition-transform group-hover:translate-x-1" />
+        {project.links.length > 0 && (
+          <span className="flex shrink-0 flex-wrap justify-end gap-2">
+            {project.links.map((link) => {
+              const LinkIcon = link.icon;
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2 rounded-full border border-ink-800 bg-ink-900/60 px-4 py-2 text-sm font-medium text-ink-100 transition-colors hover:border-scarlet-500"
+                >
+                  {LinkIcon && <LinkIcon className="size-4" />}
+                  {link.label}
+                </a>
+              );
+            })}
+          </span>
         )}
-      </>
-    );
-
-    const styles =
-      "group flex items-center gap-5 rounded-2xl border-2 border-scarlet-500/50 bg-ink-950/40 p-6 transition-colors hover:border-scarlet-500";
-
-    return project.url ? (
-      <a key={project.name} href={project.url} className={styles}>
-        {body}
-      </a>
-    ) : (
-      <div key={project.name} className={styles}>
-        {body}
       </div>
     );
   }

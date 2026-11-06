@@ -18,4 +18,14 @@ describe("ProjectsPage", () => {
       expect(screen.getByText(project.description)).toBeTruthy();
     }
   });
+
+  it("renders a button for every project link", () => {
+    render(<ProjectsPage />);
+    for (const project of projects) {
+      for (const link of project.links) {
+        const button = screen.getByRole("link", { name: link.label });
+        expect(button.getAttribute("href")).toBe(link.href);
+      }
+    }
+  });
 });
