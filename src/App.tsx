@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Gamepad2 } from "lucide-react";
-import { socialLinks } from "./assets/sociallinks.ts";
+import {type SocialLink, socialLinks} from "./assets/sociallinks.ts";
 import { DitherGridBackground } from "./components/dither/DitherGridBackground.tsx";
 import { SiteFooter } from "./components/layout/SiteFooter.tsx";
 import { SiteHeader } from "./components/layout/SiteHeader.tsx";
@@ -50,7 +50,7 @@ export default class App extends Component<object, AppState> {
             </div>
 
             <nav className="flex flex-wrap items-center justify-center gap-4">
-              {socialLinks.map(({ platform, label, href, icon: Icon }) => (
+              {socialLinks.map(({ platform, label, href, icon: Icon } : SocialLink ) => (
                 <a
                   key={platform}
                   href={href}

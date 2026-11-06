@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { navigation } from "../../assets/navigation.ts";
 import { SiteHeader } from "./SiteHeader.tsx";
@@ -17,12 +17,14 @@ describe("SiteHeader", () => {
     }
   });
 
-  it("renders an icon for every navigation item that defines one", () => {
+  it("renders an icon for every navigation item that defines one", async () => {
     const { container } = render(
       <SiteHeader motionEnabled onToggleMotion={() => {}} />,
     );
     const itemsWithIcons = navigation.filter((item) => item.icon).length;
-    expect(container.querySelectorAll("nav svg").length).toBe(itemsWithIcons);
+    await waitFor(() =>
+      expect(container.querySelectorAll("nav svg").length).toBe(itemsWithIcons),
+    );
   });
 
   it("reflects the motion state on the switch and reports toggles", () => {

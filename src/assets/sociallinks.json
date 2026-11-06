@@ -2,19 +2,19 @@
   {
     "platform": "twitch",
     "label": "Twitch",
-    "href": "https://twitch.tv/",
+    "href": "https://twitch.tv/ScarletBytes",
     "icon": { "source": "simple-icons", "name": "twitch" }
   },
   {
     "platform": "youtube",
     "label": "YouTube",
-    "href": "https://youtube.com/",
+    "href": "https://www.youtube.com/@ScarletBytes",
     "icon": { "source": "simple-icons", "name": "youtube" }
   },
   {
     "platform": "github",
     "label": "GitHub",
-    "href": "https://github.com/",
+    "href": "https://github.com/ScarletBytesDev",
     "icon": { "source": "simple-icons", "name": "github" }
   }
 ]

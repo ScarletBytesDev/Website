@@ -14,10 +14,7 @@ export class SiteFooter extends Component {
 
           <p className="flex items-center gap-2 text-sm font-medium text-scarlet-500">
             Good code. Good Vibes
-            <Heart
-              className="size-4 fill-scarlet-500 text-scarlet-500"
-              aria-hidden="true"
-            />
+            <Heart className="size-4 fill-scarlet-500 text-scarlet-500" />
           </p>
 
           <span className="h-px flex-1 bg-scarlet-500" aria-hidden="true" />

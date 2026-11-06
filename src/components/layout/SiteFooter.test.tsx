@@ -1,12 +1,12 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { SiteFooter } from "./SiteFooter.tsx";
 
 describe("SiteFooter", () => {
-  it("renders the tagline with a heart icon", () => {
+  it("renders the tagline with a heart icon", async () => {
     const { container } = render(<SiteFooter />);
     expect(screen.getByText("Good code. Good Vibes")).toBeTruthy();
-    expect(container.querySelector("svg")).not.toBeNull();
+    await waitFor(() => expect(container.querySelector("svg")).not.toBeNull());
   });
 
   it("renders the scarlet line segments", () => {

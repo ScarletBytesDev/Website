@@ -1,11 +1,10 @@
 import { createElement } from "react";
 import type { ComponentType } from "react";
-import type { LucideIcon } from "lucide-react";
-import { Code, House, Rocket, Tv, Users, Video } from "lucide-react";
-import type { SimpleIcon } from "simple-icons";
-import { siGithub, siTwitch, siYoutube } from "simple-icons";
+import { GENERATED_ICONS } from "./iconRegistry.generated.ts";
 
-export type IconComponent = ComponentType<{ className?: string }>;
+export type IconProps = { className?: string; strokeWidth?: number };
+
+export type IconComponent = ComponentType<IconProps>;
 
 /** How an icon is referenced from the JSON assets. */
 export type IconReference =
@@ -14,25 +13,30 @@ export type IconReference =
   | { source: "custom"; name: string }
   | { source: "custom"; src: string };
 
-/** Lucide icons usable from the JSON assets, keyed by export name. */
-const LUCIDE_ICONS: Record<string, LucideIcon> = {
-  Code,
-  House,
-  Rocket,
-  Tv,
-  Users,
-  Video,
-};
-
-/** simple-icons marks usable from the JSON assets, keyed by slug. */
-const SIMPLE_ICONS: Record<string, SimpleIcon> = {
-  twitch: siTwitch,
-  youtube: siYoutube,
-  github: siGithub,
-};
-
-/** Custom icon components usable from the JSON assets, keyed by name. */
+/** Hand-made icon components usable from the JSON assets, keyed by name. */
 const CUSTOM_ICONS: Record<string, IconComponent> = {};
+
+function extractPathFromSvg(svg: string): string {
+  const match = svg.match(/<path d="([^"]+)"/);
+  if (!match) {
+    throw new Error("simple-icons SVG without a path");
+  }
+  return match[1];
+}
+
+function svgIconComponent(path: string): IconComponent {
+  return ({ className }: IconProps) =>
+    createElement(
+      "svg",
+      {
+        viewBox: "0 0 24 24",
+        className,
+        fill: "currentColor",
+        "aria-hidden": true,
+      },
+      createElement("path", { d: path }),
+    );
+}
 
 export function parseIconReference(raw: unknown): IconReference {
   const ref = raw as Record<string, unknown> | null;
@@ -64,39 +68,36 @@ export function parseIconReference(raw: unknown): IconReference {
   }
 }
 
+/**
+ * Resolves an icon reference to a renderable component. Any lucide or
+ * simple-icons name works as long as it is referenced from a JSON asset (or
+ * code) — the icon registry is generated from those references at build time,
+ * so only used icons are bundled. Custom references either point at an image
+ * file ("src") or at a component registered in CUSTOM_ICONS.
+ */
 export function resolveIcon(ref: IconReference): IconComponent {
   switch (ref.source) {
     case "lucide": {
-      const icon = LUCIDE_ICONS[ref.name];
+      const icon = GENERATED_ICONS[`lucide:${ref.name}`];
       if (!icon) {
         throw new Error(
-          `Unknown lucide icon "${ref.name}" — add it to LUCIDE_ICONS in icons.ts`,
+          `Unknown lucide icon "${ref.name}" — reference it from a JSON asset (e.g. navigation.json) and the registry picks it up`,
         );
       }
-      return icon;
+      return icon as IconComponent;
     }
     case "simple-icons": {
-      const icon = SIMPLE_ICONS[ref.name];
-      if (!icon) {
+      const svg = GENERATED_ICONS[`simple-icons:${ref.name}`];
+      if (typeof svg !== "string") {
         throw new Error(
-          `Unknown simple-icons mark "${ref.name}" — add it to SIMPLE_ICONS in icons.ts`,
+          `Unknown simple-icons mark "${ref.name}" — reference it from a JSON asset (e.g. sociallinks.json) and the registry picks it up`,
         );
       }
-      return ({ className }) =>
-        createElement(
-          "svg",
-          {
-            viewBox: "0 0 24 24",
-            className,
-            fill: "currentColor",
-            "aria-hidden": true,
-          },
-          createElement("path", { d: icon.path }),
-        );
+      return svgIconComponent(extractPathFromSvg(svg));
     }
     case "custom": {
       if ("src" in ref) {
-        return ({ className }) =>
+        return ({ className }: IconProps) =>
           createElement("img", { src: ref.src, alt: "", className });
       }
       const icon = CUSTOM_ICONS[ref.name];
