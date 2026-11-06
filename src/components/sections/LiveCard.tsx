@@ -1,6 +1,5 @@
 import { Component } from "react";
-
-const CHANNEL = "scarletbytes";
+import { site } from "../../assets/site.ts";
 
 /**
  * Twitch player embed for the ScarletBytes stream, framed like the design's
@@ -10,7 +9,7 @@ const CHANNEL = "scarletbytes";
  */
 export class LiveCard extends Component {
   override render() {
-    const embedUrl = `https://player.twitch.tv/?channel=${CHANNEL}&parent=${window.location.hostname}`;
+    const embedUrl = `https://player.twitch.tv/?channel=${site.twitchChannel}&parent=${window.location.hostname}`;
 
     return (
       <div className="relative w-full max-w-sm">

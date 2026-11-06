@@ -1,13 +1,9 @@
 import { Component } from "react";
 import { ArrowRight, Code } from "lucide-react";
 import logo from "../../assets/FoxxyLogoFull.png";
-import { socialLinks } from "../../assets/sociallinks.ts";
+import { site } from "../../assets/site.ts";
 import { TwitchIcon } from "../icons/BrandIcons.tsx";
 import { LiveCard } from "./LiveCard.tsx";
-
-const TWITCH_URL =
-  socialLinks.find((link) => link.platform === "twitch")?.href ??
-  "https://twitch.tv/";
 
 /**
  * Landing hero: split-color wordmark, tagline and CTAs on the left, the fox
@@ -36,7 +32,7 @@ export class Hero extends Component {
 
           <div className="mt-8 flex flex-wrap gap-4">
             <a
-              href={TWITCH_URL}
+              href={site.twitchUrl}
               target="_blank"
               rel="noreferrer"
               className="flex items-center gap-2.5 rounded-full bg-gradient-to-r from-scarlet-600 to-scarlet-500 px-6 py-3 font-semibold text-white shadow-lg shadow-scarlet-500/25 transition-transform hover:scale-105"

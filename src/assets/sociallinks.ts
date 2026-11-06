@@ -44,8 +44,3 @@ function parseEntry(raw: unknown): SocialLink {
 export const socialLinks: readonly SocialLink[] = socialLinksJson.map(
   parseEntry,
 );
-
-/** Primary Twitch channel URL, used by the "Watch on Twitch" calls to action. */
-export const twitchUrl =
-  socialLinks.find((link) => link.platform === "twitch")?.href ??
-  "https://twitch.tv/";
