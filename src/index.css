@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
- * Base color palette — single source of truth for the app's static colors.
+ * Base color palette - single source of truth for the app's static colors.
  * Every token generates a Tailwind utility (bg-ink-950, text-scarlet-500, ...)
  * and a plain CSS variable (--color-ink-950, ...) that components can pass
  * around via var(), e.g. the DitherGridBackground color props.
@@ -11,7 +11,7 @@
  * to its source scanner).
  */
 @theme static {
-    /* Ink — cool dark neutrals: backgrounds, borders, text */
+    /* Ink - cool dark neutrals: backgrounds, borders, text */
     --color-ink-950: #101a22;
     --color-ink-900: #18181b;
     --color-ink-800: #27272a;
@@ -20,16 +20,33 @@
     --color-ink-200: #e4e4e7;
     --color-ink-100: #f4f4f5;
 
-    /* Wine — warm dark maroon for the upper background gradient */
+    /* Wine - warm dark maroon for the upper background gradient */
     --color-wine-950: #2e1420;
 
-    /* Steel — structural blue-grey (grid lines) */
+    /* Steel - structural blue-grey (grid lines, secondary chrome) */
+    --color-steel-800: #365461;
     --color-steel-500: #5b8293;
 
-    /* Scarlet — brand red */
+    /* Scarlet - brand red */
     --color-scarlet-600: #a32338;
     --color-scarlet-500: #e0233f;
 
+    /* Amber - the stream-overlay UI accent (borders, tabs, labels) */
+    --color-amber-500: #f2a93b;
+
+    /* Panel - dark teal-black window backgrounds */
+    --color-panel-950: #0e151a;
+
     /* Twitch purple */
     --color-twitch-500: #9146ff;
+}
+
+@layer base {
+    /*
+     * Stream-overlay look: monospace everywhere, like the OBS layouts
+     * ([ streaming.exe ] status panels and friends).
+     */
+    body {
+        font-family: var(--font-mono);
+    }
 }

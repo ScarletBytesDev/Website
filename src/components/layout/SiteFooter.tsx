@@ -13,17 +13,17 @@ export class SiteFooter extends Component {
             <footer className="relative z-20 bg-ink-950/60 px-4 py-4 sm:px-6">
                 <div className="flex items-center gap-4">
                     <span
-                        className="h-px flex-1 bg-scarlet-500"
+                        className="h-px flex-1 bg-amber-500"
                         aria-hidden="true"
                     />
 
-                    <p className="flex items-center gap-2 text-base italic tracking-wide text-scarlet-500">
+                    <p className="flex items-center gap-2 text-base italic tracking-wide text-amber-500">
                         Good code. good vibes.
-                        <Heart className="size-4 text-scarlet-500" />
+                        <Heart className="size-4 text-amber-500" />
                     </p>
 
                     <span
-                        className="h-px flex-1 bg-scarlet-500"
+                        className="h-px flex-1 bg-amber-500"
                         aria-hidden="true"
                     />
                 </div>

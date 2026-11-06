@@ -11,9 +11,7 @@ export class Hero extends Component {
             <section className="mx-auto grid w-full max-w-7xl items-center gap-10 px-6 py-12 sm:grid-cols-2 lg:py-16">
                 <div>
                     <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
-                        <span className="text-scarlet-500">
-                            Scarlet
-                        </span>
+                        <span className="text-scarlet-500">Scarlet</span>
                         <span className="text-ink-100">Bytes</span>
                     </h1>
 

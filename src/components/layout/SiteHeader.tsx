@@ -85,7 +85,7 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
                 <span className="text-sm font-medium text-ink-300">Motion</span>
                 <span
                     className={`relative inline-block h-6 w-11 rounded-full transition-colors ${
-                        motionEnabled ? "bg-scarlet-500" : "bg-ink-800"
+                        motionEnabled ? "bg-amber-500" : "bg-ink-800"
                     }`}
                 >
                     <span
@@ -134,7 +134,7 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
                                     rel={external ? "noreferrer" : undefined}
                                     className={`flex items-center gap-2 border-b-2 px-4 py-2 text-sm font-medium transition-colors ${
                                         this.isActive(item)
-                                            ? "border-scarlet-500 text-scarlet-500"
+                                            ? "border-amber-500 text-amber-500"
                                             : "border-transparent text-ink-300 hover:text-ink-100"
                                     }`}
                                 >
@@ -175,7 +175,7 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
                             onClick={this.handleCloseMenu}
                             className={`flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium transition-colors hover:bg-ink-900 ${
                                 this.isActive(item)
-                                    ? "text-scarlet-500"
+                                    ? "text-amber-500"
                                     : "text-ink-200 hover:text-ink-100"
                             }`}
                         >
