@@ -1,0 +1,21 @@
+[
+    {
+        "label": "Projects",
+        "href": "#projects",
+        "description": "Open source & creative tools",
+        "icon": { "source": "lucide", "name": "Code" }
+    },
+    {
+        "label": "Stream",
+        "href": "https://twitch.tv/ScarletBytes",
+        "description": "Coding, gaming and more",
+        "accent": "purple",
+        "icon": { "source": "lucide", "name": "TvMinimalPlay" }
+    },
+    {
+        "label": "Community",
+        "href": "@discord",
+        "description": "Join the duckies!",
+        "icon": { "source": "lucide", "name": "Users" }
+    }
+]
