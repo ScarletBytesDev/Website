@@ -50,3 +50,11 @@ function parseEntry(raw: unknown): NavigationItem {
  */
 export const navigation: readonly NavigationItem[] =
     navigationJson.map(parseEntry);
+
+/**
+ * Whether a navigation href points at another website (as opposed to a local
+ * hash or path). External links always open in a new window.
+ */
+export function isExternalHref(href: string): boolean {
+    return /^https?:\/\//.test(href);
+}

@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { FeatureCards } from "../components/sections/FeatureCards.tsx";
 import { Hero } from "../components/sections/Hero.tsx";
+import { LiveCard } from "../components/sections/LiveCard.tsx";
 
 /** Landing view: hero and the section cards. */
 export class HomePage extends Component {
@@ -9,6 +10,7 @@ export class HomePage extends Component {
             <>
                 <Hero />
                 <FeatureCards />
+                <LiveCard />
             </>
         );
     }

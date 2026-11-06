@@ -1,14 +1,16 @@
 import { Heart } from "lucide-react";
 import { Component } from "react";
+import { SocialLinks } from "./SocialLinks.tsx";
 
 /**
  * Footer banner matching the header's translucent ink. A scarlet line runs
- * left to right through the middle, interrupted by the centered tagline.
+ * left to right through the middle, interrupted by the centered tagline,
+ * with the social links below it.
  */
 export class SiteFooter extends Component {
     override render() {
         return (
-            <footer className="relative z-20 bg-ink-950/60 px-4 py-3 sm:px-6">
+            <footer className="relative z-20 bg-ink-950/60 px-4 py-4 sm:px-6">
                 <div className="flex items-center gap-4">
                     <span
                         className="h-px flex-1 bg-scarlet-500"
@@ -25,6 +27,8 @@ export class SiteFooter extends Component {
                         aria-hidden="true"
                     />
                 </div>
+
+                <SocialLinks />
             </footer>
         );
     }

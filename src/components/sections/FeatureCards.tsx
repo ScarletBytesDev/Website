@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Component } from "react";
 import {
+    isExternalHref,
     type NavigationAccent,
     type NavigationItem,
     navigation,
@@ -34,6 +35,8 @@ export class FeatureCards extends Component {
             <a
                 key={item.label}
                 href={item.href}
+                target={isExternalHref(item.href) ? "_blank" : undefined}
+                rel={isExternalHref(item.href) ? "noreferrer" : undefined}
                 className={`group flex items-center gap-5 rounded-2xl border-2 bg-ink-950/40 p-6 transition-colors ${styles.border}`}
             >
                 {Icon && (

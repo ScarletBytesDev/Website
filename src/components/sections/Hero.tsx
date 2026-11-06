@@ -1,8 +1,5 @@
-import { ArrowRight, Code } from "lucide-react";
 import { Component } from "react";
 import logo from "../../assets/FoxxyLogoFull.png";
-import { site } from "../../assets/site.ts";
-import { TwitchIcon } from "../icons/BrandIcons.tsx";
 import { LiveCard } from "./LiveCard.tsx";
 
 /**
@@ -29,27 +26,6 @@ export class Hero extends Component {
                     </p>
 
                     <div className="mt-5 h-1 w-16 rounded-full bg-scarlet-500" />
-
-                    <div className="mt-8 flex flex-wrap gap-4">
-                        <a
-                            href={site.twitchUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="flex items-center gap-2.5 rounded-full bg-gradient-to-r from-scarlet-600 to-scarlet-500 px-6 py-3 font-semibold text-white shadow-lg shadow-scarlet-500/25 transition-transform hover:scale-105"
-                        >
-                            <TwitchIcon className="size-5" />
-                            Watch on Twitch
-                            <ArrowRight className="size-5" />
-                        </a>
-
-                        <a
-                            href="#projects"
-                            className="flex items-center gap-2.5 rounded-full border border-ink-800 bg-ink-900/60 px-6 py-3 font-semibold text-ink-100 transition-colors hover:border-scarlet-500"
-                        >
-                            <Code className="size-5" />
-                            Explore Projects
-                        </a>
-                    </div>
                 </div>
 
                 <img
@@ -57,10 +33,6 @@ export class Hero extends Component {
                     alt="Foxxy, the ScarletBytes mascot"
                     className="mx-auto h-64 w-auto drop-shadow-2xl sm:h-80 lg:h-[26rem]"
                 />
-
-                <div className="flex justify-center lg:justify-end">
-                    <LiveCard />
-                </div>
             </section>
         );
     }

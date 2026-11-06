@@ -7,7 +7,7 @@
     },
     {
         "label": "Stream",
-        "href": "#stream",
+        "href": "https://twitch.tv/ScarletBytes",
         "description": "Coding, gaming and more",
         "accent": "purple",
         "icon": { "source": "lucide", "name": "TvMinimalPlay" }

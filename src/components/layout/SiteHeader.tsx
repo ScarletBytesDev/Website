@@ -1,7 +1,11 @@
 import { Menu, X } from "lucide-react";
 import { Component } from "react";
 import logo from "../../assets/FoxxyLogoFull.png";
-import { type NavigationItem, navigation } from "../../assets/navigation.ts";
+import {
+    isExternalHref,
+    type NavigationItem,
+    navigation,
+} from "../../assets/navigation.ts";
 import "./SiteHeader.css";
 
 export interface SiteHeaderProps {
@@ -121,10 +125,13 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
                     <nav className="hidden items-center gap-2 md:flex">
                         {navigation.map((item) => {
                             const Icon = item.icon;
+                            const external = isExternalHref(item.href);
                             return (
                                 <a
                                     key={item.label}
                                     href={item.href}
+                                    target={external ? "_blank" : undefined}
+                                    rel={external ? "noreferrer" : undefined}
                                     className={`flex items-center gap-2 border-b-2 px-4 py-2 text-sm font-medium transition-colors ${
                                         this.isActive(item)
                                             ? "border-scarlet-500 text-scarlet-500"
@@ -157,6 +164,14 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
                         <a
                             key={item.label}
                             href={item.href}
+                            target={
+                                isExternalHref(item.href) ? "_blank" : undefined
+                            }
+                            rel={
+                                isExternalHref(item.href)
+                                    ? "noreferrer"
+                                    : undefined
+                            }
                             onClick={this.handleCloseMenu}
                             className={`flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-medium transition-colors hover:bg-ink-900 ${
                                 this.isActive(item)
