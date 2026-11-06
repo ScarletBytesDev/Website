@@ -1,10 +1,9 @@
 import { Component } from "react";
 import logo from "../../assets/FoxxyLogoFull.png";
-import { LiveCard } from "./LiveCard.tsx";
 
 /**
- * Landing hero: split-color wordmark, tagline and CTAs on the left, the fox
- * mascot in the middle and the live stream card on the right.
+ * Landing hero: split-color wordmark and tagline on the left, the fox mascot
+ * in the middle.
  */
 export class Hero extends Component {
     override render() {
