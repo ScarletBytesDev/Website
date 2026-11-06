@@ -6,14 +6,18 @@ import {
     type NavigationItem,
     navigation,
 } from "../../assets/navigation.ts";
-import { WindowPanel } from "../layout/WindowPanel.tsx";
+import {
+    WINDOW_ACCENT_CLASSES,
+    type WindowAccent,
+    WindowPanel,
+} from "../layout/WindowPanel.tsx";
 
 const ACCENT_STYLES: Record<
     NavigationAccent,
-    { panel: "twitch" | "ice"; icon: string; iconBox: string }
+    { panel: WindowAccent; icon: string; iconBox: string }
 > = {
     scarlet: {
-        panel: "ice",
+        panel: "scarlet",
         icon: "text-scarlet-500",
         iconBox: "border-scarlet-500/40",
     },
@@ -41,7 +45,7 @@ export class FeatureCards extends Component {
                     href={item.href}
                     target={external ? "_blank" : undefined}
                     rel={external ? "noreferrer" : undefined}
-                    className="group flex items-center gap-5 p-6"
+                    className="group flex h-full items-center gap-5 p-6"
                 >
                     {Icon && (
                         <span
@@ -62,7 +66,9 @@ export class FeatureCards extends Component {
                         )}
                     </span>
 
-                    <ArrowRight className="size-6 shrink-0 text-amber-500 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight
+                        className={`size-6 shrink-0 transition-transform group-hover:translate-x-1 ${WINDOW_ACCENT_CLASSES[styles.panel].tab}`}
+                    />
                 </a>
             </WindowPanel>
         );

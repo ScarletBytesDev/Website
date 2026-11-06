@@ -18,9 +18,9 @@ export class ProjectsPage extends Component {
             <WindowPanel
                 key={project.name}
                 tab={toTabName(project.name)}
-                accent="ice"
+                accent="scarlet"
             >
-                <div className="flex items-center gap-5 p-6">
+                <div className="flex h-full items-center gap-5 p-6">
                     {Icon && (
                         <span className="flex size-14 shrink-0 items-center justify-center rounded-xl border border-scarlet-500/40 bg-ink-950/60">
                             <Icon className="size-8 text-scarlet-500" />
