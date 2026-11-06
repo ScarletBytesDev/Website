@@ -11,7 +11,7 @@ import { WindowPanel } from "../layout/WindowPanel.tsx";
 export class LiveCard extends Component {
     override render() {
         const embedUrl = `https://player.twitch.tv/?channel=${site.twitchChannel}&parent=${window.location.hostname}`;
-
+        
         return (
             <WindowPanel tab="streaming.exe" accent="amber" className="w-full">
                 <div className="p-4">
