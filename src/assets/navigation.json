@@ -14,7 +14,7 @@
     },
     {
         "label": "Community",
-        "href": "#community",
+        "href": "@discord",
         "description": "Join the duckies!",
         "icon": { "source": "lucide", "name": "Users" }
     }

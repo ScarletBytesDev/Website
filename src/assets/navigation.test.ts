@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { isExternalHref, navigation } from "./navigation.ts";
+import { site } from "./site.ts";
 
 describe("isExternalHref", () => {
     it("detects links to other websites", () => {
@@ -23,5 +24,10 @@ describe("navigation", () => {
                 expect(item.href.startsWith("#")).toBe(true);
             }
         }
+    });
+
+    it("resolves the @discord placeholder to the invite URL", () => {
+        const community = navigation.find((item) => item.label === "Community");
+        expect(community?.href).toBe(site.discordInviteUrl);
     });
 });
