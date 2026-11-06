@@ -1,10 +1,5 @@
 [
   {
-    "label": "Home",
-    "href": "#home",
-    "icon": { "source": "lucide", "name": "House" }
-  },
-  {
     "label": "Projects",
     "href": "#projects",
     "description": "Open source & creative tools",

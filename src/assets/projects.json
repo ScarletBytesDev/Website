@@ -1,0 +1,12 @@
+[
+  {
+    "name": "This Website",
+    "description": "The site you are looking at — Vite, React and Tailwind with a hand-built animated dither background.",
+    "icon": { "source": "lucide", "name": "Code" }
+  },
+  {
+    "name": "Dither Background",
+    "description": "A parameterized animated dither and grid background system, driven by CSS custom properties.",
+    "icon": { "source": "lucide", "name": "Sparkles" }
+  }
+]

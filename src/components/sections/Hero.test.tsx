@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
+import { site } from "../../assets/site.ts";
 import { Hero } from "./Hero.tsx";
 
 describe("Hero", () => {
@@ -32,6 +33,8 @@ describe("Hero", () => {
     const frame = container.querySelector("iframe");
     expect(frame).not.toBeNull();
     expect(frame?.getAttribute("src")).toContain("player.twitch.tv");
-    expect(frame?.getAttribute("src")).toContain("channel=scarletbytes");
+    expect(frame?.getAttribute("src")).toContain(
+      `channel=${site.twitchChannel}`,
+    );
   });
 });

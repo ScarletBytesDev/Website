@@ -9,6 +9,7 @@ function firstSwitch(): HTMLElement {
 
 describe("App motion preference", () => {
   beforeEach(() => {
+    window.location.hash = "";
     window.localStorage.clear();
   });
 
@@ -27,5 +28,16 @@ describe("App motion preference", () => {
     render(<App />);
     fireEvent.click(firstSwitch());
     expect(preferences.get("motionEnabled")).toBe(false);
+  });
+
+  it("renders the home view by default", () => {
+    render(<App />);
+    expect(screen.getByText("Build. Stream. Repeat.")).toBeTruthy();
+  });
+
+  it("renders the projects view for the #projects hash", () => {
+    window.location.hash = "#projects";
+    render(<App />);
+    expect(screen.getByText("Open source & creative tools.")).toBeTruthy();
   });
 });
