@@ -65,13 +65,21 @@ export class ProjectsPage extends Component {
     override render() {
         return (
             <section className="mx-auto w-full max-w-7xl px-6 py-12">
-                <h1 className="text-4xl font-bold tracking-tight text-ink-100">
-                    Projects
-                </h1>
-                <p className="mt-2 text-lg tracking-wide text-steel-500">
-                    Open source &amp; creative tools.
-                </p>
+                <WindowPanel
+                    tab={toTabName("projects")}
+                    accent="amber"
+                >
+                    <div className="h-full items-center gap-5 p-6">
+                        <h1 className="text-4xl font-bold tracking-tight text-ink-100">
+                            Projects
+                        </h1>
+                        <p className="mt-2 text-lg tracking-wide text-steel-500">
+                            Open source &amp; creative tools.
+                        </p>
+                    </div>  
+                </WindowPanel>
 
+                
                 {projects.length === 0 ? (
                     <p className="mt-10 text-steel-500">
                         Projects are coming soon - check back later.
@@ -82,6 +90,8 @@ export class ProjectsPage extends Component {
                     </div>
                 )}
             </section>
+            
+            
         );
     }
 }

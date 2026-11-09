@@ -1,0 +1,39 @@
+{
+    "name": "react-dither-grid",
+    "version": "0.1.0",
+    "description": "Animated bitmap-dithered gradient backgrounds for React, with a tileable Perlin/fBm noise engine for generating custom dither tiles.",
+    "license": "MIT",
+    "type": "module",
+    "sideEffects": ["**/*.css"],
+    "files": ["dist"],
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js"
+        },
+        "./style.css": "./dist/DitherGridBackground.css"
+    },
+    "types": "./dist/index.d.ts",
+    "module": "./dist/index.js",
+    "scripts": {
+        "build": "tsc -p tsconfig.build.json && node scripts/copy-css.mjs"
+    },
+    "keywords": [
+        "react",
+        "dither",
+        "bitmap",
+        "gradient",
+        "background",
+        "noise",
+        "perlin",
+        "bayer",
+        "animation"
+    ],
+    "peerDependencies": {
+        "react": ">=18"
+    },
+    "devDependencies": {
+        "@types/react": "^19.3.0",
+        "typescript": "~7.0.2"
+    }
+}
