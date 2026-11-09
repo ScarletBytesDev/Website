@@ -1,5 +1,5 @@
+import { DitherGridBackground } from "@code-of-chaos/dither";
 import { Component } from "react";
-import { DitherGridBackground } from "./components/dither/DitherGridBackground.tsx";
 import { SiteFooter } from "./components/layout/SiteFooter.tsx";
 import { SiteHeader } from "./components/layout/SiteHeader.tsx";
 import { HomePage } from "./pages/HomePage.tsx";

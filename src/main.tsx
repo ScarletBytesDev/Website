@@ -1,5 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
+import "@code-of-chaos/dither/style.css";
 import "./index.css";
 import App from "./App.tsx";
 

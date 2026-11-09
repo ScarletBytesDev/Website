@@ -1,4 +1,4 @@
-import { DitherTile } from "../noise/DitherTile.ts";
+import { DitherTile } from "@code-of-chaos/dither";
 
 /**
  * Static steel bitmap dither tile for window panels. Unlike the page
