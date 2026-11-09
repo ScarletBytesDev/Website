@@ -12,6 +12,7 @@ export type Project = {
     description: string;
     icon?: IconComponent;
     links: readonly ProjectLink[];
+    children: readonly Project[];
 };
 
 function parseLink(raw: unknown): ProjectLink {
@@ -33,7 +34,7 @@ function parseLink(raw: unknown): ProjectLink {
     };
 }
 
-function parseEntry(raw: unknown): Project {
+export function parseProject(raw: unknown): Project {
     const item = raw as Record<string, unknown> | null;
     if (!item || typeof item !== "object") {
         throw new Error("Project entry must be an object");
@@ -44,19 +45,26 @@ function parseEntry(raw: unknown): Project {
     if (item.links !== undefined && !Array.isArray(item.links)) {
         throw new Error("Project links must be an array");
     }
+    if (item.children !== undefined && !Array.isArray(item.children)) {
+        throw new Error("Project children must be an array");
+    }
 
     return {
         name: item.name,
         description: item.description,
         icon: resolveOptionalIcon(item.icon),
         links: Array.isArray(item.links) ? item.links.map(parseLink) : [],
+        children: Array.isArray(item.children)
+            ? item.children.map(parseProject)
+            : [],
     };
 }
 
 /**
  * Projects shown on the projects page. Add entries to projects.json — each
- * needs a name and description, and may declare an icon and a list of link
- * buttons (e.g. "Website" and "GitHub"), each with its own optional icon
- * ("lucide", "simple-icons" or "custom", see icons.ts).
+ * needs a name and description, and may declare an icon, a list of link
+ * buttons (e.g. "Website" and "GitHub", each with its own optional icon —
+ * "lucide", "simple-icons" or "custom", see icons.ts) and a `children` list
+ * of nested sub-projects (same shape, to any depth).
  */
-export const projects: readonly Project[] = projectsJson.map(parseEntry);
+export const projects: readonly Project[] = projectsJson.map(parseProject);
