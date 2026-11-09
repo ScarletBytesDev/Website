@@ -28,12 +28,12 @@ export class Hero extends Component {
                             <div className="mt-5 h-1 w-16 rounded-full bg-scarlet-500" />
 
                             <p className="mt-6 max-w-xl leading-relaxed text-ink-300">
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit. Sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut
-                                enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat.
+                                I'm Anna, a developer who builds tools from the ground up, live on stream. 
+                                ScarletBytes is where those projects land: open-source tools, creative experiments,
+                                and the live-coding chaos in between.
+                                <br/>
+                                <br/>
+                                Poke around the projects, catch a stream, or join the chaotic duckies on dis.
                             </p>
                         </div>
 
