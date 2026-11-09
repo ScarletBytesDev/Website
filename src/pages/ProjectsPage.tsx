@@ -46,7 +46,7 @@ export class ProjectsPage extends Component {
                                         href={link.href}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="flex items-center gap-2 rounded-full border border-steel-500/50 px-4 py-2 text-sm font-medium text-ink-200 transition-colors hover:border-amber-500 hover:text-amber-500"
+                                        className="flex items-center gap-2 rounded-full border border-steel-500/50 px-4 py-2 text-sm font-medium text-ink-200 transition-colors hover:border-amber-500 hover:text-amber-500 bg-panel-950/85"
                                     >
                                         {LinkIcon && (
                                             <LinkIcon className="size-4" />
