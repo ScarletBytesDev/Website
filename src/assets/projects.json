@@ -8,6 +8,11 @@
                 "label": "GitHub",
                 "href": "https://github.com/ScarletBytesDev/Website",
                 "icon": { "source": "simple-icons", "name": "github" }
+            },
+            {
+                "label": "Website",
+                "href": "https://scarletbytes.dev",
+                "icon": { "source": "lucide", "name": "globe" }
             }
         ],
         "children": [
