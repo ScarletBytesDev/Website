@@ -43,14 +43,18 @@ export default class App extends Component<object, AppState> {
         const { motionEnabled, hash } = this.state;
 
         return (
-            <DitherGridBackground
-                className="min-h-screen w-full"
-                animateNoise={motionEnabled}
-                animateGlow={true}
-                noiseAngle={-90}
-                noiseSpeed={16}
-            >
-                <div className="flex min-h-screen flex-col">
+            <>
+                <div className="fixed inset-0">
+                    <DitherGridBackground
+                        className="h-full w-full"
+                        animateNoise={motionEnabled}
+                        animateGlow={true}
+                        noiseAngle={-90}
+                        noiseSpeed={16}
+                    />
+                </div>
+
+                <div className="relative flex min-h-screen flex-col">
                     <SiteHeader
                         motionEnabled={motionEnabled}
                         onToggleMotion={this.handleToggleMotion}
@@ -66,7 +70,7 @@ export default class App extends Component<object, AppState> {
 
                     <SiteFooter />
                 </div>
-            </DitherGridBackground>
+            </>
         );
     }
 }
