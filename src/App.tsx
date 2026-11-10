@@ -46,7 +46,9 @@ export default class App extends Component<object, AppState> {
             <DitherGridBackground
                 className="min-h-screen w-full"
                 animateNoise={motionEnabled}
-                animateGlow={motionEnabled}
+                animateGlow={true}
+                noiseAngle={-90}
+                noiseSpeed={16}
             >
                 <div className="flex min-h-screen flex-col">
                     <SiteHeader
