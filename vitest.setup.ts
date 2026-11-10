@@ -28,6 +28,41 @@ function neutralizeIframeLoading(): void {
 
 neutralizeIframeLoading();
 
+// happy-dom defines IntersectionObserver but never fires its callback, so
+// lazy-loaded elements (e.g. the Twitch embed in LiveCard) would stay hidden
+// forever in tests. This mock fires the callback synchronously on observe().
+class ImmediateIntersectionObserver {
+    private readonly cb: IntersectionObserverCallback;
+
+    constructor(cb: IntersectionObserverCallback) {
+        this.cb = cb;
+    }
+
+    observe(target: Element): void {
+        this.cb(
+            [
+                {
+                    isIntersecting: true,
+                    target,
+                } as IntersectionObserverEntry,
+            ],
+            this as unknown as IntersectionObserver,
+        );
+    }
+
+    unobserve(): void {}
+    disconnect(): void {}
+    takeRecords(): IntersectionObserverEntry[] {
+        return [];
+    }
+    readonly root = null;
+    readonly rootMargin = "";
+    readonly thresholds: readonly number[] = [];
+}
+
+globalThis.IntersectionObserver =
+    ImmediateIntersectionObserver as unknown as typeof IntersectionObserver;
+
 afterEach(() => {
     cleanup();
 });
