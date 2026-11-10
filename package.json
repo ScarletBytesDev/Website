@@ -18,7 +18,7 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@code-of-chaos/dither": "^0.3.0",
+        "@code-of-chaos/dither": "^0.5.0",
         "lucide-react": "^1.70.0",
         "react": "^19.2.0",
         "react-dom": "^19.2.0",
