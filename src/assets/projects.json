@@ -1,7 +1,7 @@
 [
     {
         "name": "This Website",
-        "description": "The site you are looking at — Vite, React and Tailwind with a hand-built animated dither background.",
+        "description": "The site you are looking at. Built with Vite, React and Tailwind with a hand-built animated dither background.",
         "icon": { "source": "lucide", "name": "Code" },
         "links": [
             {
