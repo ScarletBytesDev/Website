@@ -17,7 +17,7 @@ const ACCENT_STYLES: Record<
     { panel: WindowAccent; icon: string; iconBox: string }
 > = {
     scarlet: {
-        panel: "scarlet",
+        panel: "default",
         icon: "text-scarlet-500",
         iconBox: "border-scarlet-500/40",
     },

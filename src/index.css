@@ -26,7 +26,13 @@
     /* Steel - structural blue-grey (grid lines, secondary chrome) */
     --color-steel-900: #203a3a;
     --color-steel-800: #365461;
+    --color-steel-700: #4d6978;
+    --color-steel-600: #648293;
     --color-steel-500: #5b8293;
+    --color-steel-400: #4d6978;
+    --color-steel-300: #84a1b3;
+    --color-steel-200: #b0c4d0;
+    --color-steel-100: #d8e4ed;
 
     /* Scarlet - brand red */
     --color-scarlet-600: #a32338;

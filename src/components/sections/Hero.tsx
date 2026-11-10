@@ -11,7 +11,7 @@ export class Hero extends Component {
     override render() {
         return (
             <section className="mx-auto w-full max-w-7xl px-6 py-12 lg:py-16">
-                <WindowPanel tab="scarletbytes.exe" accent="scarlet">
+                <WindowPanel tab="scarletbytes.exe" accent="default">
                     <div className="grid items-center gap-10 p-8 sm:grid-cols-2 lg:p-12">
                         <div>
                             <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
@@ -41,7 +41,7 @@ export class Hero extends Component {
                             <img
                                 src={logo}
                                 alt="Foxxy, the ScarletBytes mascot"
-                                className="mx-auto h-64 w-auto drop-shadow-2xl sm:h-80 lg:h-[26rem]"
+                                className="mx-auto h-64 w-auto drop-shadow-2xl sm:h-80 lg:h-104"
                             />
                         </div>
                     </div>

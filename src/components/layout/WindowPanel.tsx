@@ -3,8 +3,8 @@ import { Component } from "react";
 import { windowDitherTile } from "./windowDither.ts";
 import "./WindowPanel.css";
 
-/** Panel chrome color: amber (streaming.exe), twitch purple, or scarlet. */
-export type WindowAccent = "amber" | "twitch" | "scarlet";
+/** Panel chrome color: amber (streaming.exe), twitch purple, or default. */
+export type WindowAccent = "amber" | "twitch" | "default";
 
 /**
  * Chrome classes per accent - the single source shared by panels and their
@@ -16,7 +16,7 @@ export const WINDOW_ACCENT_CLASSES: Record<
 > = {
     amber: { border: "border-amber-500", tab: "text-amber-500" },
     twitch: { border: "border-twitch-500", tab: "text-twitch-500" },
-    scarlet: { border: "border-scarlet-500", tab: "text-scarlet-500" },
+    default: { border: "border-steel-600", tab: "text-steel-600" },
 };
 
 export interface WindowPanelProps {

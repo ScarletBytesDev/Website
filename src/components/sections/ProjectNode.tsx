@@ -42,7 +42,7 @@ export class ProjectNode extends Component<ProjectNodeProps, ProjectNodeState> {
         const hasChildren = project.children.length > 0;
 
         return (
-            <WindowPanel tab={toTabName(project.name)} accent="scarlet">
+            <WindowPanel tab={toTabName(project.name)} accent="default">
                 <div className="flex h-full items-center gap-5 p-6">
                     {hasChildren && (
                         <button
