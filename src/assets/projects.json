@@ -1,0 +1,33 @@
+[
+    {
+        "name": "This Website",
+        "description": "The site you are looking at. Built with Vite, React and Tailwind with a hand-built animated dither background.",
+        "icon": { "source": "lucide", "name": "Code" },
+        "links": [
+            {
+                "label": "GitHub",
+                "href": "https://github.com/ScarletBytesDev/Website",
+                "icon": { "source": "simple-icons", "name": "github" }
+            },
+            {
+                "label": "Website",
+                "href": "https://scarletbytes.dev",
+                "icon": { "source": "lucide", "name": "globe" }
+            }
+        ],
+        "children": [
+            {
+                "name": "Dither Background",
+                "description": "A parameterized animated dither and grid background system, driven by CSS custom properties.",
+                "icon": { "source": "lucide", "name": "Sparkles" },
+                "links": [
+                    {
+                        "label": "GitHub",
+                        "href": "https://github.com/code-of-chaos/dither.js",
+                        "icon": { "source": "simple-icons", "name": "github" }
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,20 @@
+/*
+ * Static bitmap dither overlay for window panels: the steel tile from
+ * windowDither.ts sits on top of the panel fill and fades out from right to
+ * left. Unlike the page background it never animates.
+ */
+.window-panel__dither {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background-image: var(--window-panel-dither);
+    background-size: 256px 256px;
+    background-repeat: repeat;
+    image-rendering: pixelated;
+
+    -webkit-mask-image: linear-gradient(to left, black 15%, transparent 90%);
+
+    mask-image: linear-gradient(to left, black 15%, transparent 90%);
+}

@@ -1,0 +1,32 @@
+[
+    {
+        "platform": "twitch",
+        "label": "Twitch",
+        "href": "https://twitch.tv/ScarletBytes",
+        "icon": { "source": "simple-icons", "name": "twitch" }
+    },
+    {
+        "platform": "youtube",
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@ScarletBytes",
+        "icon": { "source": "simple-icons", "name": "youtube" }
+    },
+    {
+        "platform": "bluesky",
+        "label": "Bluesky",
+        "href": "https://bsky.app/profile/scarletbytes.dev",
+        "icon": { "source": "simple-icons", "name": "bluesky" }
+    },
+    {
+        "platform": "x",
+        "label": "X",
+        "href": "https://x.com/ScarletBytesDev",
+        "icon": { "source": "simple-icons", "name": "X" }
+    },
+    {
+        "platform": "github",
+        "label": "GitHub",
+        "href": "https://github.com/ScarletBytesDev",
+        "icon": { "source": "simple-icons", "name": "github" }
+    }
+]
