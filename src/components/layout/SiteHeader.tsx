@@ -93,7 +93,7 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
                     onToggle={onToggleTheme}
                     activeClassName="bg-scarlet-600"
                     activeIcon={<Sun className="size-4 text-scarlet-600" />}
-                    inactiveIcon={<Moon className="size-4 text-steel-800" />}
+                    inactiveIcon={<Moon className="size-4 text-ink-800" />}
                 />
             </>
         );

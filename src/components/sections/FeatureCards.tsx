@@ -60,7 +60,7 @@ export class FeatureCards extends Component {
                             {item.label}
                         </span>
                         {item.description && (
-                            <span className="mt-1 block text-sm tracking-wide text-steel-500">
+                            <span className="mt-1 block text-sm tracking-wide text-ink-500">
                                 {item.description}
                             </span>
                         )}

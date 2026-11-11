@@ -15,7 +15,7 @@ export const WINDOW_ACCENT_CLASSES: Record<
 > = {
     amber: { border: "border-amber-500", tab: "text-amber-500" },
     twitch: { border: "border-twitch-500", tab: "text-twitch-500" },
-    default: { border: "border-steel-600", tab: "text-steel-600" },
+    default: { border: "border-ink-600", tab: "text-ink-600" },
 };
 
 export interface WindowPanelProps {
@@ -58,7 +58,7 @@ export class WindowPanel extends Component<WindowPanelProps> {
                         className="pointer-events-none absolute inset-0 z-0 [mask-image:linear-gradient(to_left,black_15%,transparent_90%)] [-webkit-mask-image:linear-gradient(to_left,black_15%,transparent_90%)]"
                         aria-hidden="true"
                     >
-                        <div className="absolute inset-0 bg-steel-900 [mask-image:var(--window-panel-dither)] [-webkit-mask-image:var(--window-panel-dither)] [mask-size:256px_256px] [-webkit-mask-size:256px_256px] [mask-repeat:repeat] [-webkit-mask-repeat:repeat] [image-rendering:pixelated]" />
+                        <div className="absolute inset-0 bg-ink-900 [mask-image:var(--window-panel-dither)] [-webkit-mask-image:var(--window-panel-dither)] [mask-size:256px_256px] [-webkit-mask-size:256px_256px] [mask-repeat:repeat] [-webkit-mask-repeat:repeat] [image-rendering:pixelated]" />
                     </div>
 
                     <div className="relative z-1 flex flex-1 flex-col">

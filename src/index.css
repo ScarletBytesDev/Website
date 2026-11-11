@@ -13,25 +13,16 @@
 @theme static {
     /* light-dark() keeps both palettes on the Tailwind tokens themselves. */
     --color-ink-950: light-dark(#f5f8f9, #101a22);
-    --color-ink-900: light-dark(#fafcfc, #18181b);
-    --color-ink-800: light-dark(#dfe8eb, #27272a);
-    --color-ink-700: light-dark(#c5d0d9, #363636);
-    --color-ink-600: light-dark(#b1c5cc, #4d6978);
-    --color-ink-500: light-dark(#88a6b1, #648293);
-    --color-ink-400: light-dark(#52636d, #a1a1aa);
-    --color-ink-300: light-dark(#40515b, #d4d4d8);
-    --color-ink-200: light-dark(#263640, #e4e4e7);
-    --color-ink-100: light-dark(#17252d, #f4f4f5);
+    --color-ink-900: light-dark(#d7e6eb, #203a3a);
+    --color-ink-800: light-dark(#b1c5cc, #365461);
+    --color-ink-700: light-dark(#88a6b1, #4d6978);
+    --color-ink-600: light-dark(#6f919d, #648293);
+    --color-ink-500: light-dark(#557d8a, #5b8293);
+    --color-ink-400: light-dark(#6f919d, #4d6978);
+    --color-ink-300: light-dark(#557582, #84a1b3);
+    --color-ink-200: light-dark(#27434f, #b0c4d0);
+    --color-ink-100: light-dark(#18313d, #d8e4ed);
     --color-wine-950: light-dark(#fbf4f6, #2e1420);
-    --color-steel-900: light-dark(#d7e6eb, #203a3a);
-    --color-steel-800: light-dark(#b1c5cc, #365461);
-    --color-steel-700: light-dark(#88a6b1, #4d6978);
-    --color-steel-600: light-dark(#6f919d, #648293);
-    --color-steel-500: light-dark(#557d8a, #5b8293);
-    --color-steel-400: light-dark(#6f919d, #4d6978);
-    --color-steel-300: light-dark(#557582, #84a1b3);
-    --color-steel-200: light-dark(#27434f, #b0c4d0);
-    --color-steel-100: light-dark(#18313d, #d8e4ed);
     --color-scarlet-600: light-dark(#c27685, #a32338);
     --color-scarlet-500: light-dark(#c51d38, #e0233f);
     --color-amber-500: light-dark(#a35e00, #f2a93b);
@@ -61,6 +52,6 @@
      * ([ streaming.exe ] status panels and friends).
      */
     body {
-        font-family: var(--font-mono);
+        font-family: var(--font-mono), sans-serif;
     }
 }
