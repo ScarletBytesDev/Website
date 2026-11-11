@@ -52,6 +52,6 @@
      * ([ streaming.exe ] status panels and friends).
      */
     body {
-        font-family: var(--font-mono);
+        font-family: var(--font-mono), sans-serif;
     }
 }
