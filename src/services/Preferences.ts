@@ -1,12 +1,14 @@
 /** All user preferences with their default values. New entries need no extra wiring. */
 export type PreferenceValues = {
     motionEnabled: boolean;
+    lightMode: boolean;
 };
 
 const STORAGE_KEY = "scarletbytes:preferences";
 
 const DEFAULTS: PreferenceValues = {
     motionEnabled: true,
+    lightMode: false,
 };
 
 /**

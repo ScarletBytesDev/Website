@@ -25,6 +25,7 @@ describe("Preferences", () => {
     it("returns defaults for a fresh store", () => {
         const preferences = new Preferences(fakeStorage());
         expect(preferences.get("motionEnabled")).toBe(true);
+        expect(preferences.get("lightMode")).toBe(false);
     });
 
     it("persists values across instances", () => {

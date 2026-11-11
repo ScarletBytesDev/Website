@@ -9,14 +9,14 @@ describe("SiteHeader", () => {
     });
 
     it("renders the logo and split wordmark for desktop and mobile", () => {
-        render(<SiteHeader motionEnabled onToggleMotion={() => {}} />);
+        render(<SiteHeader motionEnabled lightMode={false} onToggleMotion={() => {}} onToggleTheme={() => {}} />);
         expect(screen.getAllByText("Scarlet")).toHaveLength(2);
         expect(screen.getAllByText("Bytes")).toHaveLength(2);
         expect(screen.getAllByAltText("ScarletBytes fox logo")).toHaveLength(2);
     });
 
     it("renders every navigation item from the asset", () => {
-        render(<SiteHeader motionEnabled onToggleMotion={() => {}} />);
+        render(<SiteHeader motionEnabled lightMode={false} onToggleMotion={() => {}} onToggleTheme={() => {}} />);
         for (const item of navigation) {
             expect(
                 screen.getAllByText(item.label).length,
@@ -26,7 +26,7 @@ describe("SiteHeader", () => {
 
     it("renders an icon for every navigation item that defines one", async () => {
         const { container } = render(
-            <SiteHeader motionEnabled onToggleMotion={() => {}} />,
+            <SiteHeader motionEnabled lightMode={false} onToggleMotion={() => {}} onToggleTheme={() => {}} />,
         );
         const itemsWithIcons = navigation.filter((item) => item.icon).length;
         await waitFor(() =>
@@ -42,6 +42,8 @@ describe("SiteHeader", () => {
             <SiteHeader
                 motionEnabled={false}
                 onToggleMotion={onToggleMotion}
+                lightMode={false}
+                onToggleTheme={() => {}}
             />,
         );
 
@@ -53,13 +55,13 @@ describe("SiteHeader", () => {
     });
 
     it("opens the burger menu with links and the motion toggle", () => {
-        render(<SiteHeader motionEnabled onToggleMotion={() => {}} />);
+        render(<SiteHeader motionEnabled lightMode={false} onToggleMotion={() => {}} onToggleTheme={() => {}} />);
         const menu = screen.getByTestId("mobile-menu");
-        expect(menu.classList.contains("site-header__menu--open")).toBe(false);
+        expect(menu.classList.contains("opacity-0")).toBe(true);
 
         fireEvent.click(screen.getByRole("button", { name: "Open menu" }));
 
-        expect(menu.classList.contains("site-header__menu--open")).toBe(true);
+        expect(menu.classList.contains("opacity-100")).toBe(true);
         for (const item of navigation) {
             expect(menu.textContent).toContain(item.label);
         }
@@ -67,7 +69,7 @@ describe("SiteHeader", () => {
     });
 
     it("closes the burger menu when a link is clicked", () => {
-        render(<SiteHeader motionEnabled onToggleMotion={() => {}} />);
+        render(<SiteHeader motionEnabled lightMode={false} onToggleMotion={() => {}} onToggleTheme={() => {}} />);
         fireEvent.click(screen.getByRole("button", { name: "Open menu" }));
 
         const menu = screen.getByTestId("mobile-menu");
@@ -77,6 +79,6 @@ describe("SiteHeader", () => {
             fireEvent.click(link);
         }
 
-        expect(menu.classList.contains("site-header__menu--open")).toBe(false);
+        expect(menu.classList.contains("opacity-0")).toBe(true);
     });
 });

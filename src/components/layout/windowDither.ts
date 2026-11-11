@@ -1,14 +1,12 @@
 import { DitherTile } from "@code-of-chaos/dither";
 
 /**
- * Static steel bitmap dither tile for window panels. Unlike the page
- * background it never scrolls; the CSS fades it from right to left over the
- * panel fill. The color is a slightly brighter steel than the panel
- * background, resolved through the theme.
+ * Static alpha dither tile for window panels. The tile is deliberately white
+ * because the panel applies its theme-aware Tailwind color through a mask.
  */
 export const windowDitherTile = new DitherTile({
     cells: 64,
-    color: "var(--color-steel-900, #365461)",
+    color: "#ffffff",
     density: 1,
     contrast: 1.7,
     scale: 100,

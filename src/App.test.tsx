@@ -30,6 +30,20 @@ describe("App motion preference", () => {
         expect(preferences.get("motionEnabled")).toBe(false);
     });
 
+    it("toggles and persists light mode", () => {
+        render(<App />);
+        const themeToggle = screen.getAllByRole("switch", {
+            name: "Light mode",
+        })[0];
+
+        expect(themeToggle.getAttribute("aria-checked")).toBe("false");
+        fireEvent.click(themeToggle);
+
+        expect(themeToggle.getAttribute("aria-checked")).toBe("true");
+        expect(preferences.get("lightMode")).toBe(true);
+        expect(document.documentElement.dataset.theme).toBe("light");
+    });
+
     it("renders the home view by default", () => {
         render(<App />);
         expect(screen.getByText("Build. Stream. Repeat.")).toBeTruthy();
