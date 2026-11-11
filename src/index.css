@@ -15,6 +15,9 @@
     --color-ink-950: light-dark(#f5f8f9, #101a22);
     --color-ink-900: light-dark(#fafcfc, #18181b);
     --color-ink-800: light-dark(#dfe8eb, #27272a);
+    --color-ink-700: light-dark(#c5d0d9, #363636);
+    --color-ink-600: light-dark(#b1c5cc, #4d6978);
+    --color-ink-500: light-dark(#88a6b1, #648293);
     --color-ink-400: light-dark(#52636d, #a1a1aa);
     --color-ink-300: light-dark(#40515b, #d4d4d8);
     --color-ink-200: light-dark(#263640, #e4e4e7);

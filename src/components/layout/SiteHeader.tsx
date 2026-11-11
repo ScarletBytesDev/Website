@@ -1,63 +1,18 @@
 import { Menu, Moon, Sun, X } from "lucide-react";
-import { Component, type ReactNode } from "react";
+import { Component } from "react";
 import logo from "../../assets/FoxxyLogoFull.png";
 import {
     isExternalHref,
     type NavigationItem,
     navigation,
 } from "../../assets/navigation.ts";
+import { PreferenceToggle } from "./PreferenceToggle.tsx";
 
 export interface SiteHeaderProps {
     motionEnabled: boolean;
     onToggleMotion: () => void;
     lightMode: boolean;
     onToggleTheme: () => void;
-}
-
-interface PreferenceToggleProps {
-    label: string;
-    ariaLabel: string;
-    checked: boolean;
-    onToggle: () => void;
-    activeClassName: string;
-    activeIcon?: ReactNode;
-    inactiveIcon?: ReactNode;
-}
-
-function PreferenceToggle({
-    label,
-    ariaLabel,
-    checked,
-    onToggle,
-    activeClassName,
-    activeIcon,
-    inactiveIcon,
-}: PreferenceToggleProps) {
-    return (
-        <button
-            type="button"
-            role="switch"
-            aria-label={ariaLabel}
-            aria-checked={checked}
-            onClick={onToggle}
-            className="flex items-center gap-2.5"
-        >
-            <span className="text-sm font-medium text-ink-300">{label}</span>
-            <span
-                className={`relative inline-block h-6 w-11 rounded-full transition-colors ${
-                    checked ? activeClassName : "bg-ink-800"
-                }`}
-            >
-                <span
-                    className={`absolute left-0.5 top-0.5 flex size-5 items-center justify-center rounded-full bg-white transition-transform ${
-                        checked ? "translate-x-5" : "translate-x-0"
-                    }`}
-                >
-                    {checked ? activeIcon : inactiveIcon}
-                </span>
-            </span>
-        </button>
-    );
 }
 
 interface SiteHeaderState {
@@ -136,9 +91,9 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
                     ariaLabel="Light mode"
                     checked={lightMode}
                     onToggle={onToggleTheme}
-                    activeClassName="bg-amber-500"
-                    activeIcon={<Sun className="size-3 text-amber-500" />}
-                    inactiveIcon={<Moon className="size-3 text-ink-400" />}
+                    activeClassName="bg-scarlet-600"
+                    activeIcon={<Sun className="size-4 text-scarlet-600" />}
+                    inactiveIcon={<Moon className="size-4 text-steel-800" />}
                 />
             </>
         );
