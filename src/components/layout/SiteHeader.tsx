@@ -99,7 +99,7 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
         );
 
         return (
-            <header className="sticky top-0 z-20 flex items-center gap-4 bg-ink-900/80 px-4 py-3 sm:px-6">
+            <header className="sticky top-0 z-20 flex items-center gap-4 bg-panel-950/80 px-4 py-3 sm:px-6">
                 <div className="flex flex-1 items-center">
                     <button
                         type="button"
