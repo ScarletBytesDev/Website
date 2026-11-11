@@ -1,7 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import { Component } from "react";
 import { windowDitherTile } from "./windowDither.ts";
-import "./WindowPanel.css";
 
 /** Panel chrome color: amber (streaming.exe), twitch purple, or default. */
 export type WindowAccent = "amber" | "twitch" | "default";
@@ -32,8 +31,7 @@ export interface WindowPanelProps {
  * Stream-overlay style window panel: dark teal-black fill, a colored border
  * and a bracketed monospace tab pill sitting on the top border, like the OBS
  * layouts ([ streaming.exe ], [ chat.dll ], ...). A static steel dither
- * overlay (see WindowPanel.css) sits on top of the fill and fades out from
- * right to left.
+ * overlay sits on top of the fill and fades out from right to left.
  */
 export class WindowPanel extends Component<WindowPanelProps> {
     override render() {
@@ -56,7 +54,12 @@ export class WindowPanel extends Component<WindowPanelProps> {
                         } as CSSProperties
                     }
                 >
-                    <div className="window-panel__dither" aria-hidden="true" />
+                    <div
+                        className="pointer-events-none absolute inset-0 z-0 [mask-image:linear-gradient(to_left,black_15%,transparent_90%)] [-webkit-mask-image:linear-gradient(to_left,black_15%,transparent_90%)]"
+                        aria-hidden="true"
+                    >
+                        <div className="absolute inset-0 bg-steel-900 [mask-image:var(--window-panel-dither)] [-webkit-mask-image:var(--window-panel-dither)] [mask-size:256px_256px] [-webkit-mask-size:256px_256px] [mask-repeat:repeat] [-webkit-mask-repeat:repeat] [image-rendering:pixelated]" />
+                    </div>
 
                     <div className="relative z-1 flex flex-1 flex-col">
                         {children}

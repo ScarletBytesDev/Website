@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
- * Base color palette - single source of truth for the app's static colors.
+ * Base color palette - single source of truth for the app's color tokens.
  * Every token generates a Tailwind utility (bg-ink-950, text-scarlet-500, ...)
  * and a plain CSS variable (--color-ink-950, ...) that components can pass
  * around via var(), e.g. the DitherGridBackground color props.
@@ -11,41 +11,48 @@
  * to its source scanner).
  */
 @theme static {
-    /* Ink - cool dark neutrals: backgrounds, borders, text */
-    --color-ink-950: #101a22;
-    --color-ink-900: #18181b;
-    --color-ink-800: #27272a;
-    --color-ink-400: #a1a1aa;
-    --color-ink-300: #d4d4d8;
-    --color-ink-200: #e4e4e7;
-    --color-ink-100: #f4f4f5;
-
-    /* Wine - warm dark maroon for the upper background gradient */
-    --color-wine-950: #2e1420;
-
-    /* Steel - structural blue-grey (grid lines, secondary chrome) */
-    --color-steel-900: #203a3a;
-    --color-steel-800: #365461;
-    --color-steel-700: #4d6978;
-    --color-steel-600: #648293;
-    --color-steel-500: #5b8293;
-    --color-steel-400: #4d6978;
-    --color-steel-300: #84a1b3;
-    --color-steel-200: #b0c4d0;
-    --color-steel-100: #d8e4ed;
-
-    /* Scarlet - brand red */
-    --color-scarlet-600: #a32338;
-    --color-scarlet-500: #e0233f;
-
-    /* Amber - the stream-overlay UI accent (borders, tabs, labels) */
-    --color-amber-500: #f2a93b;
-
-    /* Panel - dark teal-black window backgrounds */
-    --color-panel-950: #0e151a;
+    /* light-dark() keeps both palettes on the Tailwind tokens themselves. */
+    --color-ink-950: light-dark(#f5f8f9, #101a22);
+    --color-ink-900: light-dark(#fafcfc, #18181b);
+    --color-ink-800: light-dark(#dfe8eb, #27272a);
+    --color-ink-700: light-dark(#c5d0d9, #363636);
+    --color-ink-600: light-dark(#b1c5cc, #4d6978);
+    --color-ink-500: light-dark(#88a6b1, #648293);
+    --color-ink-400: light-dark(#52636d, #a1a1aa);
+    --color-ink-300: light-dark(#40515b, #d4d4d8);
+    --color-ink-200: light-dark(#263640, #e4e4e7);
+    --color-ink-100: light-dark(#17252d, #f4f4f5);
+    --color-wine-950: light-dark(#fbf4f6, #2e1420);
+    --color-steel-900: light-dark(#d7e6eb, #203a3a);
+    --color-steel-800: light-dark(#b1c5cc, #365461);
+    --color-steel-700: light-dark(#88a6b1, #4d6978);
+    --color-steel-600: light-dark(#6f919d, #648293);
+    --color-steel-500: light-dark(#557d8a, #5b8293);
+    --color-steel-400: light-dark(#6f919d, #4d6978);
+    --color-steel-300: light-dark(#557582, #84a1b3);
+    --color-steel-200: light-dark(#27434f, #b0c4d0);
+    --color-steel-100: light-dark(#18313d, #d8e4ed);
+    --color-scarlet-600: light-dark(#c27685, #a32338);
+    --color-scarlet-500: light-dark(#c51d38, #e0233f);
+    --color-amber-500: light-dark(#a35e00, #f2a93b);
+    --color-panel-950: light-dark(#fcfdfd, #0e151a);
 
     /* Twitch purple */
     --color-twitch-500: #9146ff;
+}
+
+:root {
+    color-scheme: dark;
+    --theme-color: #101a22;
+    --dither-grid: #5b8293;
+    --dither-noise: #a32338;
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+    --theme-color: #f5f8f9;
+    --dither-grid: #88a6b1;
+    --dither-noise: #c27685;
 }
 
 @layer base {

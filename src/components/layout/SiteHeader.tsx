@@ -1,4 +1,4 @@
-import { Menu, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { Component } from "react";
 import logo from "../../assets/FoxxyLogoFull.png";
 import {
@@ -6,11 +6,13 @@ import {
     type NavigationItem,
     navigation,
 } from "../../assets/navigation.ts";
-import "./SiteHeader.css";
+import { PreferenceToggle } from "./PreferenceToggle.tsx";
 
 export interface SiteHeaderProps {
     motionEnabled: boolean;
     onToggleMotion: () => void;
+    lightMode: boolean;
+    onToggleTheme: () => void;
 }
 
 interface SiteHeaderState {
@@ -71,35 +73,30 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
         );
     }
 
-    private renderMotionToggle() {
-        const { motionEnabled, onToggleMotion } = this.props;
-
-        return (
-            <button
-                type="button"
-                role="switch"
-                aria-checked={motionEnabled}
-                onClick={onToggleMotion}
-                className="flex items-center gap-2.5"
-            >
-                <span className="text-sm font-medium text-ink-300">Motion</span>
-                <span
-                    className={`relative inline-block h-6 w-11 rounded-full transition-colors ${
-                        motionEnabled ? "bg-scarlet-600" : "bg-ink-800"
-                    }`}
-                >
-                    <span
-                        className={`absolute left-0.5 top-0.5 size-5 rounded-full bg-white transition-transform ${
-                            motionEnabled ? "translate-x-5" : "translate-x-0"
-                        }`}
-                    />
-                </span>
-            </button>
-        );
-    }
-
     override render() {
         const { menuOpen } = this.state;
+        const { motionEnabled, onToggleMotion, lightMode, onToggleTheme } =
+            this.props;
+        const toggles = (
+            <>
+                <PreferenceToggle
+                    label="Motion"
+                    ariaLabel="Motion"
+                    checked={motionEnabled}
+                    onToggle={onToggleMotion}
+                    activeClassName="bg-scarlet-600"
+                />
+                <PreferenceToggle
+                    label="Theme"
+                    ariaLabel="Light mode"
+                    checked={lightMode}
+                    onToggle={onToggleTheme}
+                    activeClassName="bg-scarlet-600"
+                    activeIcon={<Sun className="size-4 text-scarlet-600" />}
+                    inactiveIcon={<Moon className="size-4 text-steel-800" />}
+                />
+            </>
+        );
 
         return (
             <header className="sticky top-0 z-20 flex items-center gap-4 bg-ink-900/80 px-4 py-3 sm:px-6">
@@ -150,14 +147,16 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
 
                 <div className="flex flex-1 items-center justify-end gap-4">
                     <div className="hidden items-center gap-4 md:flex">
-                        {this.renderMotionToggle()}
+                        {toggles}
                     </div>
                 </div>
 
                 <div
                     data-testid="mobile-menu"
-                    className={`site-header__menu absolute inset-x-0 top-full z-30 flex flex-col gap-1 border-b border-ink-800 bg-ink-950/95 p-4 md:hidden ${
-                        menuOpen ? "site-header__menu--open" : ""
+                    className={`absolute inset-x-0 top-full z-30 flex flex-col gap-1 border-b border-ink-800 bg-ink-950/95 p-4 transition-[opacity,visibility,transform] duration-200 ease-in motion-reduce:transition-none md:hidden ${
+                        menuOpen
+                            ? "pointer-events-auto visible translate-y-0 opacity-100"
+                            : "pointer-events-none invisible -translate-y-2 opacity-0"
                     }`}
                 >
                     {navigation.map((item) => (
@@ -185,7 +184,9 @@ export class SiteHeader extends Component<SiteHeaderProps, SiteHeaderState> {
                     ))}
 
                     <div className="mt-2 border-t border-ink-800 pt-3">
-                        {this.renderMotionToggle()}
+                        <div className="flex flex-row w-full justify-between">
+                            {toggles}
+                        </div>
                     </div>
                 </div>
             </header>
