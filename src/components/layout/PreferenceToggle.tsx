@@ -29,14 +29,14 @@ export function PreferenceToggle({
             onClick={onToggle}
             className="flex items-center gap-2.5"
         >
-            <span className="text-sm font-medium text-steel-300">{label}</span>
+            <span className="text-sm font-medium text-ink-300">{label}</span>
             <span
                 className={`relative inline-block h-6 w-11 rounded-full transition-colors ${
-                    checked ? activeClassName : "bg-steel-800"
+                    checked ? activeClassName : "bg-ink-800"
                 }`}
             >
                 <span
-                    className={`absolute left-0.5 top-0.5 flex size-5 items-center justify-center rounded-full bg-steel-200 transition-transform ${
+                    className={`absolute left-0.5 top-0.5 flex size-5 items-center justify-center rounded-full bg-ink-200 transition-transform ${
                         checked ? "translate-x-5" : "translate-x-0"
                     }`}
                 >

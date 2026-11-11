@@ -16,14 +16,14 @@ export class ProjectsPage extends Component {
                         <h1 className="text-4xl font-bold tracking-tight text-ink-100">
                             Projects
                         </h1>
-                        <p className="mt-2 text-lg tracking-wide text-steel-500">
+                        <p className="mt-2 text-lg tracking-wide text-ink-500">
                             Open source &amp; creative tools.
                         </p>
                     </div>
                 </WindowPanel>
 
                 {projects.length === 0 ? (
-                    <p className="mt-10 text-steel-500">
+                    <p className="mt-10 text-ink-500">
                         Projects are coming soon - check back later.
                     </p>
                 ) : (

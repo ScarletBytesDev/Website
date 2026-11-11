@@ -50,7 +50,7 @@ export class ProjectNode extends Component<ProjectNodeProps, ProjectNodeState> {
                             onClick={this.handleToggle}
                             aria-expanded={expanded}
                             aria-label={`${expanded ? "Collapse" : "Expand"} ${project.name}`}
-                            className="flex size-9 shrink-0 items-center justify-center rounded-full border border-steel-500/50 bg-panel-950/85 text-steel-500 transition-colors hover:border-amber-500 hover:text-amber-500"
+                            className="flex size-9 shrink-0 items-center justify-center rounded-full border border-ink-500/50 bg-panel-950/85 text-ink-500 transition-colors hover:border-amber-500 hover:text-amber-500"
                         >
                             <ChevronRight
                                 className={`size-5 transition-transform ${expanded ? "rotate-90" : ""}`}
@@ -68,7 +68,7 @@ export class ProjectNode extends Component<ProjectNodeProps, ProjectNodeState> {
                         <span className="block text-xl font-bold text-ink-100">
                             {project.name}
                         </span>
-                        <span className="mt-1 block text-sm tracking-wide text-steel-500">
+                         <span className="mt-1 block text-sm tracking-wide text-ink-500">
                             {project.description}
                         </span>
                     </span>
@@ -83,7 +83,7 @@ export class ProjectNode extends Component<ProjectNodeProps, ProjectNodeState> {
                                         href={link.href}
                                         target="_blank"
                                         rel="noreferrer"
-                                        className="flex items-center gap-2 rounded-full border border-steel-500/50 px-4 py-2 text-sm font-medium text-ink-200 transition-colors hover:border-amber-500 hover:text-amber-500 bg-panel-950/85"
+                                        className="flex items-center gap-2 rounded-full border border-ink-500/50 px-4 py-2 text-sm font-medium text-ink-200 transition-colors hover:border-amber-500 hover:text-amber-500 bg-panel-950/85"
                                     >
                                         {LinkIcon && (
                                             <LinkIcon className="size-4" />

@@ -41,7 +41,7 @@ describe("PreferenceToggle", () => {
         expect(toggle.getAttribute("aria-checked")).toBe("false");
         expect(screen.getByTestId("inactive-icon")).toBeTruthy();
         expect(toggle.querySelectorAll("span")[1]?.className).toContain(
-            "bg-steel-800",
+            "bg-ink-800",
         );
 
         fireEvent.click(toggle);
